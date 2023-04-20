@@ -1,0 +1,130 @@
+---
+import Layout from "../layouts/Global.astro";
+
+// const {title, image, date, modified, description} = Astro.props;
+const {data} = Astro.props;
+
+---
+
+<Layout
+  title={data.title}
+  description={data.description}
+>
+  <!-- We need to use is:inline in order to apply the style to the children -->
+  <style is:inline>
+    article h1,
+    article h2,
+    article h3,
+    article h4,
+    article h5,
+    article h6 {
+      font-weight: 700;
+      color: #ffffffde;
+      margin-bottom: 4px;
+      margin-top: 32px;
+    }
+    article h1 {
+      font-size: 28px;
+    }
+    article a {
+      text-decoration: underline;
+      color: #b9b8b8;
+    }
+    article a:hover {
+      /* Gradient */
+      background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      text-decoration: none;
+      transition: all 0.25s ease-in-out;
+    }
+
+    article h2 {
+      font-size: 20px;
+    }
+    article h3 {
+      font-size: 18px;
+    }
+    article h4,
+    article h5,
+    article h6 {
+      font-size: 16px;
+    }
+    article p,
+    article li,
+    article a,
+    article span,
+    article strong {
+      font-size: 15px;
+      font-weight: 400;
+      color: #b9b8b8;
+    }
+
+    /* For mobile screen */
+    @media (max-width: 640px) {
+      article h1 {
+        font-size: 24px;
+      }
+      article h2 {
+        font-size: 20px;
+      }
+      article h3 {
+        font-size: 18px;
+      }
+      article h4 {
+        font-size: 16px;
+      }
+      article h5,
+      article h6 {
+        font-size: 16px;
+      }
+      article p,
+      article li,
+      article a,
+      article span {
+        font-weight: 400;
+        color: #b9b8b8;
+        font-size: 14px;
+      }
+    }
+  </style>
+  <script>
+    import { annotate } from "rough-notation";
+    document.querySelectorAll("strong").forEach((el) => {
+      console.log(el);
+
+      const annotation = annotate(el, {
+        type: "underline",
+        iterations: 1,
+        padding: 2,
+        // Yellow for dark mode
+        color: "#f9f871",
+      });
+      annotation.show();
+    });
+  </script>
+  <div class="max-w-2xl mx-auto">
+    <img
+      class="w-full object-cover rounded-lg aspect-video mb-4 md:mt-8 transition-all"
+      src={"/images/" + data.image}
+      alt={data.title}
+    />
+
+    <h1
+      class="text-xl mb-1 max-w-fit font-semibold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent md:text-2xl"
+    >
+      {data.title}
+    </h1>
+    <p
+      class="text-neutral-400 text-sm pb-2 mb-6 font-normal border-b-neutral-700 border-b"
+    >
+      {data.description}
+    </p>
+
+    <article class="mb-8">
+      <slot />
+    </article>
+  </div>
+</Layout>

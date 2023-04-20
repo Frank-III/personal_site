@@ -1,0 +1,146 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  schema?: Object;
+}
+import NavBar from "../components/NavBar.astro";
+
+const { title, description, schema } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title || "Frank W's Blog"}</title>
+    <meta name="description" content={description} />
+    <!-- To insert a Google Schema for articles -->
+    {
+      schema && (
+        <script type="application/ld+json">{JSON.stringify(schema)}</script>
+      )
+    }
+  </head>
+  <body class="p-6 mx-auto min-h-screen">
+    <style is:global>
+      /* inter-regular - latin */
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        src: local(""),
+          url("../fonts/inter-v12-latin-regular.woff2") format("woff2"),
+          /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url("../fonts/inter-v12-latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        font-display: swap;
+      }
+
+      /* inter-500 - latin */
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        src: local(""),
+          url("../fonts/inter-v12-latin-500.woff2") format("woff2"),
+          /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url("../fonts/inter-v12-latin-500.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        font-display: swap;
+      }
+
+      /* inter-600 - latin */
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 600;
+        src: local(""),
+          url("../fonts/inter-v12-latin-600.woff2") format("woff2"),
+          /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url("../fonts/inter-v12-latin-600.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        font-display: swap;
+      }
+
+      /* inter-700 - latin */
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        src: local(""),
+          url("../fonts/inter-v12-latin-700.woff2") format("woff2"),
+          /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url("../fonts/inter-v12-latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        font-display: swap;
+      }
+
+      /* Define background color var */
+      :root {
+        --bg-color: #131618;
+      }
+      html {
+        background-color: var(--bg-color);
+      }
+      body {
+        max-width: 800px;
+      }
+
+      main {
+        min-height: 74vh;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        letter-spacing: -0.05em;
+        transition: font-size 0.3s;
+      }
+      p,
+      button,
+      a {
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+        color: white;
+        letter-spacing: -0.01em;
+        transition: font-size 0.3s;
+      }
+      ul {
+        list-style: disc;
+        padding-inline-start: 16px;
+        margin-left: 16px;
+      }
+
+      /* li {
+        padding-inline-start: 12px;
+      } */
+      /* li::before {
+        content: "-";
+        margin-right: 12px;
+      } */
+    </style>
+    <!-- <script async defer src="https://simple.julienc.me/latest.js"></script>
+    <noscript
+      ><img
+        src="https://simple.julienc.me/noscript.gif"
+        alt=""
+        referrerpolicy="no-referrer-when-downgrade"
+      />
+    </noscript> -->
+    <NavBar />
+    <main>
+      <slot />
+    </main>
+    <footer class="pb-2 pt-12 text-center">
+      <p class="text-white/40 text-sm">
+        Created by Jiangda Wang
+      </p>
+    </footer>
+  </body>
+</html>

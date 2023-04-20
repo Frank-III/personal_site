@@ -1,81 +1,93 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Global.astro";
+// import type { Article } from "../types/article";
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+dayjs.extend(customParseFormat);
+import { getCollection, CollectionEntry} from 'astro:content';
+
+// Return the list of articles in the "articles" directory
+const blogs = await getCollection("blogs");
+
+// Parse the date of each article, sort by date descending and return an array of the 4 last articles
+const sortedblogs = blogs
+  .map((blog) => {
+    const { title, date, description, image } = blog.data;
+    return {
+      title,
+      date: dayjs(date, "DD-MM-YYYY").format("YYYY-MM-DD"),
+      description,
+      url: blog.slug,
+      image: image,
+    };
+  })
+  .sort((a, b) => {
+    return dayjs(b.date).diff(dayjs(a.date));
+  })
+  .splice(0, 5);
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
-	</main>
+<Layout
+  title="Frank"
+  description="I'm Frank, a 22 years old ORIE student. I occasionnaly publish articles about programming and tech."
+>
+  <div class="">
+    <h1
+      class="max-w-fit lg:text-4xl md:text-3xl text-2xl font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent"
+    >
+      Hi there <span
+        class="lg:text-4xl md:text-3xl text-2xl font-bold text-black">👋</span
+      >
+    </h1>
+    <p class="text-md mt-2 text-white/60 text-sm">
+      I'm Frank, a student major in Operation Reasearch at UIUC. <br />
+      On this website, I publish articles about what I've discovered and created.
+      <!--  <p class="text-neutral-400 text-sm md:text-[15px] mt-2 mb-2">
+      I'm <b>Julien C</b>. I'm currently studying for a "licence informatique"
+      (the French equivalent of a CS degree). I love building projects in my
+      spare time. <br />
+      You'll find my articles and the list of my projects on this website.
+    </p> -->
+    </p>
+  </div>
+
+  <h2 class="text-base md:text-xl mt-8 mb-4 text-white/90">
+    {sortedblogs.length > 1 ? "Latest articles" : "Latest article"}
+  </h2>
+  <div class="flex flex-wrap gap-3">
+    {
+      sortedblogs.map((blog) => (
+        <a
+          href={`/blogs/${blog.url}`}
+          class="inline-block w-[100%] sm:w-[48%] bg-neutral-800/60 p-4 rounded-lg article"
+        >
+          <img
+            src={"/images/" + blog.image}
+            class="w-full object-cover rounded-lg aspect-video mb-4"
+            alt={blog.title}
+          />
+          <div>
+            <h2 class="font-medium text-sm  md:text-base ">{blog.title}</h2>
+            <p class="text-xs md:text-sm text-white/40">
+              {blog.description}
+            </p>
+            <p class="text-white/50 mt-2 text-xs text-right">
+              {dayjs(blog.date, "YYYY-MM-DD")
+                .format("DD/MM/YYYY")
+                .toString()}
+            </p>
+          </div>
+        </a>
+      ))
+    }
+  </div>
 </Layout>
 
 <style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
+  a:hover {
+    transform: scale(1.03);
+  }
+  .article {
+    transition: transform 0.15s ease-in-out;
+  }
 </style>
