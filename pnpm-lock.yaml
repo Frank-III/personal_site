@@ -30,6 +30,9 @@ devDependencies:
   '@unocss/preset-uno':
     specifier: ^0.51.4
     version: 0.51.4
+  '@unocss/reset':
+    specifier: ^0.51.5
+    version: 0.51.5
   unocss:
     specifier: ^0.51.4
     version: 0.51.4(postcss@8.4.22)(vite@4.2.2)
@@ -880,6 +883,10 @@ packages:
 
   /@unocss/reset@0.51.4:
     resolution: {integrity: sha512-3FnajZSOrQ4qSbpkY1IGRIFYw8I9E98SBXvjMnHqSl8k4YPbBP29W3YrgSVBMOnPNRL67hRcTaMF3nmbnBuWtQ==}
+    dev: true
+
+  /@unocss/reset@0.51.5:
+    resolution: {integrity: sha512-Ss/KnoNmHkYOdlN+KEhnYMal/i+Zo2yMm9m10xcXxMawplSP+xZ73csQt0V1IB/OS3mWoRTL+6LpsGkKJ/SYeQ==}
     dev: true
 
   /@unocss/scope@0.51.4:
