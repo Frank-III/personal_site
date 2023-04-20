@@ -6,7 +6,7 @@ import UnoCSS from 'unocss/astro';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://Frank-III.github.io',
-  base: '/personal_site'
+  base: '/personal_site',
   integrations: [react(), UnoCSS()],
   markdown: {
     shikiConfig: {
