@@ -52,13 +52,13 @@ const sortedblogs = blogs
   </div>
 
   <h2 class="text-base md:text-xl mt-8 mb-4 text-white/90">
-    {sortedblogs.length > 1 ? "Latest articles" : "Latest article"}
+    {sortedblogs.length > 1 ? "Latest blogs" : "Latest blog"}
   </h2>
   <div class="flex flex-wrap gap-3">
     {
       sortedblogs.map((blog) => (
         <a
-          href={`/blogs/${blog.url}`}
+          href={`/personal_site/blogs/${blog.url}`}
           class="inline-block w-[100%] sm:w-[48%] bg-neutral-800/60 p-4 rounded-lg article"
         >
           <img
