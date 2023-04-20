@@ -30,7 +30,7 @@ f = relu(d)
 drawgraph(f)
 ```
 <p align="center">
-  <img src="/personal_site/imagescontent/simple_graph.svg" width="80%" height="50%"/>
+  <img src="/personal_site/images/content/simple_graph.svg" width="80%" height="50%"/>
 </p>
 
 ```julia
@@ -38,7 +38,7 @@ backward(f)
 drawgraph(f)
 ```
 <p align="center">
-  <img src="/personal_site/imagescontent/grad_plot.svg" width="80%" height="50%"/>
+  <img src="/personal_site/images/content/grad_plot.svg" width="80%" height="50%"/>
 </p>
 
 ### basic use of simple `nn` engine 

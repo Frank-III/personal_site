@@ -10,7 +10,7 @@ image: "header/autotranscriber.png"
 repository: [AutoTranscriber](https://github.com/Frank-III/auto_transcriber)
 Auto-Transcriber is an experimental, openai-powered translation tool, generating .srt file in one call!
 <p align="center">
-  <img src="/personal_site/imagescontent/20230330235522.png" width="80%" height="50%"/>
+  <img src="/personal_site/images/content/20230330235522.png" width="80%" height="50%"/>
 </p>
 
 ## Main Features
