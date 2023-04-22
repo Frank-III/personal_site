@@ -25,7 +25,7 @@ I will also try to write articles about my projects, how I made them and what mo
 
 This blog is made with [Astro](https://astro.build/), a static site generator. <br>
 I'm using [UnoCSS](https://unocss.dev/) for the styling. <br>
-And to host the website, I'm using a Raspberry Pi.
+And to host the website, I'm using GitHub🫡.
 
 ## How can I contact you ?
 
