@@ -5,6 +5,7 @@ started: 15-10-2022
 finished: 10-12-2022
 projectLink: https://github.com/Frank-III/NotionSDK.jl
 image: "header/NotionAPI.png"
+language: Julia
 ---
 # Notion_API
 NotionAPI is a simple and easy to use client library for the official [Notion API](https://developers.notion.com/).

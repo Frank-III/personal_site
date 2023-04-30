@@ -13,7 +13,7 @@ I'm not sure how my website caught you eyeballs, but I'm glad you are here.
 
 ## Who am I ?
 
-I'm a 22 years old grad student in Financial Engineering. I'm currently in 
+I'm a 22 years old grad student in Financial Engineering. I'm in loved with Functional Programming, spending spare time working side-projects built with Julia, Typescript and, of course, Python. 
 
 ## What is this blog about ?
 

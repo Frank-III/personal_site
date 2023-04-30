@@ -17,7 +17,8 @@ const portfolioCollection = defineCollection({
     started: z.string(),
     finished: z.string().optional(),
     image: z.string(),
-    projectLink: z.string().url()
+    projectLink: z.string().url(),
+    language: z.enum(["Ocaml", "Julia", "Python", "Typescript", "C++"]).optional()
   }),
 })
 
