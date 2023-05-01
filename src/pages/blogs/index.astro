@@ -29,13 +29,20 @@ const sortedblogs = blogs.map((blog) => {
   title="Frank"
   description="I'm Frank. I occasionally publish articles about programming and tech."
 >
-  <h2 class="text-base md:text-xl mb-4 max-w-fit">My last articles</h2>
+  <h1
+    class="text-xl md:text-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent"
+  >
+  My latest article
+  </h1>
+  <p class="text-neutral-400 text-sm mt-1 mb-6">
+    I may write when I don't have a good mood<br>
+  </p>
   <div class="flex flex-wrap gap-3">
     {
       sortedblogs.map((blog) => (
         <a
           href={blog.url}
-          class=" w-[100%] sm:w-[48%] bg-neutral-800/70 hover:scale-105  p-4 rounded-xl article"
+          class=" w-[100%] sm:w-[48%] bg-white/5 hover:scale-105  p-4 rounded-xl article"
         >
           <img
             src={"/personal_site/images/" + blog.image}

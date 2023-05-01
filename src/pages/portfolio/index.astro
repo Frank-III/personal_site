@@ -57,8 +57,7 @@ projects.sort((a, b) => {
             >
               {project.data.title}
             </h2>
-          <Icon size={30} pack="logos" name={project.data.language?.toLowerCase()} class="self-end"/>
-
+            <Icon weight="25" height="30" pack="logos" name={project.data.language?.toLowerCase()} class="self-end"/>
             <p class="text-neutral-500 text-sm">
               {project.data.description}
             </p>
@@ -72,7 +71,7 @@ projects.sort((a, b) => {
   }
 </Layout>
 
-<style>
+<style lang="css">
   #title {
     margin-top: 0;
   }
@@ -80,6 +79,6 @@ projects.sort((a, b) => {
     transition: transform 0.15s ease-in-out;
   }
   [astro-icon] {
-
+    fill: rgba(82, 33, 174, 0.951)
   }
 </style>
