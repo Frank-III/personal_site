@@ -1,26 +1,11 @@
 import { z, defineCollection } from 'astro:content';
-
+import {blogschema, portfolioschema} from '../schemas'
 const blogCollection = defineCollection({
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    date: z.string(),
-    modified: z.string(),
-    image: z.string(),
-    pined: z.boolean()
-  }),
+  schema: blogschema
 });
 
 const portfolioCollection = defineCollection({
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    started: z.string(),
-    finished: z.string().optional(),
-    image: z.string(),
-    projectLink: z.string().url(),
-    language: z.enum(["Ocaml", "Julia", "Python", "Typescript", "C++"]).optional()
-  }),
+  schema: portfolioschema
 })
 
 export const collections = {

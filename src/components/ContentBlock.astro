@@ -1,0 +1,36 @@
+---
+import type {blogg} from '../schemas'
+
+import dayjs from "dayjs";
+interface Props {
+  blog: blogg;
+  ishome: boolean;
+};
+
+const {blog, ishome} = Astro.props;
+---
+<a
+href={ishome? 'blogs/' + blog.url : blog.url}
+class={ishome ? "article inline-block w-[100%] sm:w-[48%] bg-white/5 p-4 rounded-lg hover:scale-105 transition-transform duration-150 ease-in-out" : "relative w-[100%] sm:w-[48%] bg-white/5 hover:scale-105  p-4 rounded-xl article hover:scale-105 transition-transform duration-150 ease-in-out"}
+>
+{blog.pined && 
+  <svg class="top-1 right-2 absolute ml-1 mt-1" 
+      xmlns="http://www.w3.org/2000/svg" 
+      width="32" height="32" 
+      viewBox="0 0 24 24">
+      <path fill="#ea1313" d="M16.729 4.271a1 1 0 0 0-1.414-.004a1.004 1.004 0 0 0-.225.355c-.832 1.736-1.748 2.715-2.904 3.293C10.889 8.555 9.4 9 7 9a1.006 1.006 0 0 0-.923.617a1.001 1.001 0 0 0 .217 1.09l3.243 3.243L5 20l6.05-4.537l3.242 3.242a.975.975 0 0 0 .326.217c.122.051.252.078.382.078s.26-.027.382-.078A.996.996 0 0 0 16 18c0-2.4.444-3.889 1.083-5.166c.577-1.156 1.556-2.072 3.293-2.904a.983.983 0 0 0 .354-.225a1 1 0 0 0-.004-1.414l-3.997-4.02z"/>
+  </svg>}
+<img
+  src={"/personal_site/images/" + blog.image}
+  class={ishome ? "w-full object-cover rounded-lg aspect-video mb-4" :"w-full object-cover rounded-md aspect-video mb-4"}
+/>
+<div>
+  <h2 class="font-medium text-sm  md:text-base ">{blog.title}</h2>
+  <p class={ishome ? "text-xs md:text-sm text-white/40" : "text-sm text-white/40"}>{blog.description}</p>
+  <p class={ishome ? "text-white/50 mt-2 text-xs text-right": "text-white/50 mt-3 text-right"}>
+    {dayjs(blog.date, "YYYY-MM-DD")
+      .format("DD/MM/YYYY")
+      .toString()}
+  </p>
+</div>
+</a>

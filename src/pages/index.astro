@@ -5,7 +5,9 @@ import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 dayjs.extend(customParseFormat);
 import { getCollection, CollectionEntry} from 'astro:content';
-
+import type {blogg} from '../schemas'
+import {filterblog} from '../utils'
+import ContentBlock from '../components/ContentBlock.astro'
 // Return the list of articles in the "articles" directory
 const blogs = await getCollection("blogs");
 
@@ -19,12 +21,14 @@ const sortedblogs = blogs
       description,
       url: blog.slug,
       image: image,
-    };
+    } as blogg;
   })
   .sort((a, b) => {
     return dayjs(b.date).diff(dayjs(a.date));
   })
   .splice(0, 5);
+
+const [pined, unpined] = filterblog(sortedblogs, (blog) => {return blog.pined});;
 ---
 
 <Layout
@@ -56,38 +60,14 @@ const sortedblogs = blogs
   </h2>
   <div class="flex flex-wrap gap-3">
     {
-      sortedblogs.map((blog) => (
-        <a
-          href={`/personal_site/blogs/${blog.url}`}
-          class="inline-block w-[100%] sm:w-[48%] bg-white/5 p-4 rounded-lg article"
-        >
-          <img
-            src={"/personal_site/images/" + blog.image}
-            class="w-full object-cover rounded-lg aspect-video mb-4"
-            alt={blog.title}
-          />
-          <div>
-            <h2 class="font-medium text-sm  md:text-base ">{blog.title}</h2>
-            <p class="text-xs md:text-sm text-white/40">
-              {blog.description}
-            </p>
-            <p class="text-white/50 mt-2 text-xs text-right">
-              {dayjs(blog.date, "YYYY-MM-DD")
-                .format("DD/MM/YYYY")
-                .toString()}
-            </p>
-          </div>
-        </a>
+      pined.map((blog) => (
+        <ContentBlock blog={blog} ishome={true}/>
       ))
+    }
+    {
+      unpined.map((blog) => (
+        <ContentBlock blog={blog} ishome={true}/>
+        ))
     }
   </div>
 </Layout>
-
-<style>
-  a:hover {
-    transform: scale(1.03);
-  }
-  .article {
-    transition: transform 0.15s ease-in-out;
-  }
-</style>

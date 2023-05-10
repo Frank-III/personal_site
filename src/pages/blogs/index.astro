@@ -1,14 +1,14 @@
 ---
 import Layout from "../../layouts/Global.astro";
-// import type { Article } from "../../types/article";
+import ContentBlock from '../../components/ContentBlock.astro'
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 dayjs.extend(customParseFormat);
-// Return the list of articles in the "articles" directory
-import { getCollection, CollectionEntry } from "astro:content";
+import { getCollection, CollectionEntry, z } from "astro:content";
+import type {blogg} from '../../schemas'
 
+import {filterblog} from '../../utils'
 const blogs = await getCollection("blogs");
-// Parse the date of each article, sort by date descending and return an array of the 4 last articles
 
 const sortedblogs = blogs.map((blog) => {
     const { title, date, description, image, pined } = blog.data;
@@ -19,24 +19,13 @@ const sortedblogs = blogs.map((blog) => {
       url: blog.slug,
       image: image,
       pined: pined
-    };
+    } as blogg;
   })
   .sort((a, b) => {
     return dayjs(b.date).diff(dayjs(a.date));
   });
 
-const [pined, unpined] = ((inputs) => {
-  const pined = [];
-  const unpined = [];
-  inputs.forEach((blog) => {
-    if (blog.pined) {
-      pined.push(blog);
-    } else {
-      unpined.push(blog);
-    }
-  })
-  return [pined, unpined];
-})(sortedblogs);
+const [pined, unpined] = filterblog(sortedblogs, (blog) => {return blog.pined});;
 
 ---
 
@@ -55,54 +44,13 @@ const [pined, unpined] = ((inputs) => {
   <div class="flex flex-wrap gap-3">
     {
       pined.map((blog) => (
-        <a
-          href={blog.url}
-          class="relative w-[100%] sm:w-[48%] bg-white/5 hover:scale-105  p-4 rounded-xl article"
-        >
-          <svg class="top-1 right-2 absolute ml-1 mt-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 1024 1024"><path fill="#e00745" d="M1014.85 379.664L646.692 9.649c-7.936-7.968-19.376-11.216-30.32-8.496c-10.912 2.656-19.6 10.849-22.945 21.568c-22.16 71.312-24.72 135.84-7.792 194.688c-1.551 1.073-3.04 2.24-4.416 3.617L410.115 392.098c-55.2-25.6-114.544-39.457-173.696-39.457c-37.6 0-74.464 5.569-109.567 16.465c-10.688 3.344-18.88 12-21.569 22.848a32.01 32.01 0 0 0 8.368 30.288l218.976 220.384l-306.16 311.04l-26.624 70.128l64.368-24.88l313.36-311.04l221.824 223.264c6.065 6.128 14.289 9.44 22.689 9.44c2.528 0 5.088-.32 7.632-.913a32.064 32.064 0 0 0 22.944-21.6c28.976-93.233 20.48-193.345-20.337-283.121l174.704-174.736c.624-.624 1.056-1.328 1.632-2c26.368 7.536 53.696 11.568 82.048 11.568c35.216 0 72.56-5.055 110.976-17.008a32.005 32.005 0 0 0 21.57-22.847a32.067 32.067 0 0 0-8.401-30.256zM603.153 824.146L200.37 418.739c103.376-12.065 214.848 29.6 295.567 110.319c80.32 80.304 119.504 191.296 107.216 295.088zm-2.926-267.6c-16.832-25.727-36.465-50.176-59.024-72.752c-22.464-22.464-47.008-42.256-72.96-59.328L612.37 280.37c14.704 25.568 33.664 50 57.007 73.328c23.857 23.84 49.09 43.136 75.601 58.064zM714.626 308.45c-61.536-61.536-85.247-130.129-72.688-212.881l286.912 288.4c-82.656 11.856-151.6-12.895-214.225-75.519z"/></svg>
-          <img
-            src={"/personal_site/images/" + blog.image}
-            class="w-full object-cover rounded-md aspect-video mb-4"
-          />
-          <div>
-            <h2 class="font-medium text-sm  md:text-base ">{blog.title}</h2>
-            <p class="text-sm text-white/40">{blog.description}</p>
-            <p class="text-white/50 mt-3 text-right">
-              {dayjs(blog.date, "YYYY-MM-DD")
-                .format("DD/MM/YYYY")
-                .toString()}
-            </p>
-          </div>
-        </a>
+        <ContentBlock blog={blog} ishome={false}/>
       ))
     }
     {
       unpined.map((blog) => (
-        <a
-          href={blog.url}
-          class=" w-[100%] sm:w-[48%] bg-white/5 hover:scale-105  p-4 rounded-xl article"
-        >
-          <img
-            src={"/personal_site/images/" + blog.image}
-            class="w-full object-cover rounded-md aspect-video mb-4"
-          />
-          <div>
-            <h2 class="font-medium text-sm  md:text-base ">{blog.title}</h2>
-            <p class="text-sm text-white/40">{blog.description}</p>
-            <p class="text-white/50 mt-3 text-right">
-              {dayjs(blog.date, "YYYY-MM-DD")
-                .format("DD/MM/YYYY")
-                .toString()}
-            </p>
-          </div>
-        </a>
-      ))
+        <ContentBlock blog={blog} ishome={false}/>
+        ))
     }
   </div>
 </Layout>
-
-<style>
-  .article {
-    transition: transform 0.15s ease-in-out;
-  }
-</style>
