@@ -70,7 +70,47 @@ const { headings } = await content.render();
       font-weight: 400;
       color: #b9b8b8;
     }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      color: #fff;
+      background-color: #151e24;
+      box-shadow: 0 0 0 1px #fff inset;
+    }
 
+    table th,
+    table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    table th {
+      background-color: #0f151b;
+    }
+
+    table td {
+      background-color: #101820;
+    }
+
+    table tr:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    table caption {
+      padding: 10px;
+      font-weight: bold;
+      font-size: 1.2em;
+      color: #fff;
+      background-color: #0f151b;
+    }
+    .astro-code {
+      border-radius: 4px;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      /* padding-left: 1rem; */
+      padding-inline: 1rem;
+    }
     /* For mobile screen */
     @media (max-width: 640px) {
       article h1 {
@@ -138,7 +178,7 @@ const { headings } = await content.render();
 					<h2 class="font-semibold">Table of Contents</h2>
 					<ul class="mt-4 text-xs">
 						{headings.map(({ depth, slug, text }: Heading) => (
-							<li class="hover:text-accent line-clamp-2">
+							<li class="headingl line-clamp-2">
 								<a
 									class={`block ${depth <= 2 ? "mt-3" : "mt-2 ps-3 text-[0.6875rem]"}`}
 									href={`#${slug}`}
@@ -158,3 +198,16 @@ const { headings } = await content.render();
     </article>
   </div>
 </Layout>
+
+<style>
+  .headingl:hover {
+    /* Gradient */
+    background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    text-decoration: none;
+    transition: all 0.25s ease-in-out;
+  }
+</style>
