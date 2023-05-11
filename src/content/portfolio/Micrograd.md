@@ -57,7 +57,7 @@ Value(,data=0.6758447934023317)
 
 drawgraph(y)
 ```
-![gout](./gout.svg)
+![gout](/personal_site/images/content/grad_plot.svg)
 
 
 #### `MLP` class and `zero_grad` function
