@@ -6,7 +6,7 @@ modified: 05-10-2023
 image: "header/readlist.png"
 pined: true
 ---
-
+(keep updated...)
 ## Updated 2023/5/10
 I've been up to `Ocaml` or more generally Functional Programming for a while. Been captured by the simplicity of functional expression and beautiful pattern matching style. However, the lack of study materials in various forms as well as the notorious lack of documentations discourage me a lot, I want to share some materials I think is usful here to help me catch up with FP better(this table would be updated frequently): 
 
@@ -22,3 +22,4 @@ I like *Real World Ocaml* very much and strongly recommend this one if you got i
 
 
 My first interest into `Ocaml` actually came from some random tweet sharing the *OCaml Programming: Correct + Efficient + Beautiful* course along with their textbook. But it is too intro at my first glance, many details are put into syntax, not language itself, which encourage me to start reading the official docs(as I did for the Julia lang, huge shoutout to julia docs, really good work). And you may know the result🫠. (The docs are so bad, not even have search function). Later, I stucked by *Real World Ocaml*, I went back to this book to find out that some important concept are discussed clearly.
+
