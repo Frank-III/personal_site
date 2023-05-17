@@ -7,6 +7,10 @@ image: "header/readlist.png"
 pined: true
 ---
 (keep updated...)
+
+## Updated 2023/5/17
+I post some interesting tree structures today, check it out: [Trees In Ocaml](/personal_site/blogs/trees_in_ocaml)
+
 ## Updated 2023/5/10
 I've been up to `Ocaml` or more generally Functional Programming for a while. Been captured by the simplicity of functional expression and beautiful pattern matching style. However, the lack of study materials in various forms as well as the notorious lack of documentations discourage me a lot, I want to share some materials I think is usful here to help me catch up with FP better(this table would be updated frequently): 
 
