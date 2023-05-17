@@ -8,6 +8,7 @@ pined: false
 ---
 
 ## Intro briefly
+code links: [ocaml_tree_implementation](https://github.com/Frank-III/blog_code/tree/1d84e5465135898c47403b11705657603e3e9eb5/tree_hw)
 
 I took [CS61a](https://cs61a.org/) about 4 years ago, a really good intro course for programmer/potential programmer. These day, I have been playing around with **Ocaml,** I would reimplement the tree structure and solve those questions that I scratched my head a lot to strength some basic knowledge in Ocaml. I will start with two most used/popular tree structure Binary Tree and more general tree:
 ```ocaml
@@ -23,12 +24,14 @@ type 'a tree =
 ```
 ## Start with [HW4](https://cs61a.org/hw/hw04/#mobiles)
 
-![mobile_structure.png](/personal_site/images/content/mobile.png)
+![mobile_structure.png](/personal_site/images/content/mobiles.png)
 
 Start by implementing the structure for `Mobile`, `Arm`s shoule have property `len` and connect to either a `Planet` or a `Mobile` and `Mobile` should connect to 2 `Arms` therefore, the design of data struture would be like this(A good example of using mutually recursive types here):
+```ocaml
+type 'a arm = 'a * 'a mobile 
 
-type 'a arm = 'a \* 'a mobile and 'a mobile = | Planet of 'a | Mobile of 'a arm \* 'a arm ;;
-
+and 'a mobile = | Planet of 'a | Mobile of 'a arm \* 'a arm ;;
+```
 PS: We do have to define `getter` and `setter` for each type as we have ADTs and could make use of pattern matchings which simplify things a lot.
 
 And then it comes **Q1**
@@ -55,37 +58,38 @@ with pattern matching, things become way clearer.
 
 When it comes to **Q3,** things finally become more related to tree:
 
-1.  we should define `print_tree` first, as mobile is a binary tree, first give the definition of how to print a binary tree:
-```ocaml
-let print_tree t = 
-  let open Core in 
-  let repeat_str n str = 
-    let rec repeat_tail sum = function 
-    | 0 -> sum 
-    | x -> repeat_tail (sum ^ str) (x-1) in 
-  repeat_tail "" n in 
-  let rec print_w_indent indent = function 
-  | Leaf a -> print_endline ((repeat_str indent " ") ^ (Int.to_string a)) 
-  | Tree (v, left, right) -> 
-    print_endline ((repeat_str indent " ") ^ (Int.to\_string v)); 
-    (print_w_indent (indent + 2) left); 
-    (print_w_indent (indent + 2) right); 
-    in print_w_indent 0 t;;
-```
+- we should define `print_tree` first, as mobile is a binary tree, first give the definition of how to print a binary tree:
+  ```ocaml
+  let print_tree t = 
+    let open Core in 
+    let repeat_str n str = 
+      let rec repeat_tail sum = function 
+      | 0 -> sum 
+      | x -> repeat_tail (sum ^ str) (x-1) in 
+    repeat_tail "" n in 
+    let rec print_w_indent indent = function 
+    | Leaf a -> print_endline ((repeat_str indent " ") ^ (Int.to_string a)) 
+    | Tree (v, left, right) -> 
+      print_endline ((repeat_str indent " ") ^ (Int.to\_string v)); 
+      (print_w_indent (indent + 2) left); 
+      (print_w_indent (indent + 2) right); 
+      in print_w_indent 0 t;;
+  ```
 
 Ocaml does not come with easily-used string concatenation like `"str"*n` in python, have to define one ourselves either use **tail recursion** or `String.concat (List.init (fun _ -> str) n)`
 
-1.  The `totals_tree`:
-```ocaml
-let total_trees t =
-  let open Btree in 
-  let rec con_sum_tree = function 
-  | Planet x -> Leaf x 
-  | Mobile ((_, rod_l), (_, rod_r)) as x -> 
-    Tree ((total_weight x), (con_sum_tree rod_l), (con_sum_tree rod_r))
-  in con_sum_tree t;;
-  ;;
-``` 
+- The `totals_tree`:
+  ```ocaml
+  let total_trees t =
+    let open Btree in 
+    let rec con_sum_tree = function 
+    | Planet x -> Leaf x 
+    | Mobile ((_, rod_l), (_, rod_r)) as x -> 
+      Tree ((total_weight x), (con_sum_tree rod_l), (con_sum_tree rod_r))
+    in con_sum_tree t;;
+    ;;
+  ``` 
+
 ### More Tree Questions
 ```ocaml
 let rec replace_loki_at_leaf t lokis_replacement= 
