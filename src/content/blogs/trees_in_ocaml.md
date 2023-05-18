@@ -118,6 +118,47 @@ let has_path t word =
 
 This one is the hardest one in the questions set, require to use fold over a recursive function, and we want to use tail-recursion here as well as `||`to make sure we could exit the program earlier when condition satisfied.
 
+## Harder Trees
+The previous examples are overall easy if you are familiar with recursion, I try a harder one from [cs61a 21summer midterm](https://cs61a.org/exam/su21/midterm/61a-su21-midterm.pdf#page=10), call **Maximum Exponen-tree-ation**:
+
+![description](/personal_site/images/content/exp_tree.png)
+
+I will start with calculate the max exponential value:
+```ocaml
+let largest_exp = function 
+  | [] -> 1
+  | hd :: tl -> 
+    let rec largest_val acc = function 
+    | hd :: tl ->  Int.max (largest_val (acc ** hd) tl) (acc ** (largest_val hd tl))
+    | [] -> acc
+    in
+    largest_val hd tl
+```
+But if you want to constructure the tree, and compare the node of the tree, `List` is not an good option, as you want to break this down into smaller problems: 
+- find **Base** and **Exponent** buttom up
+- start by dividing array into subarrays, the first stands for base, the second stands for exponent.
+- use `Array.map` to split list for value from 1 to `Array.length a - 1`.
+
+The code is shown below:
+
+```ocaml
+let rec largest_exp_tree a = 
+  if Array.length a = 1 then (Leaf (Array.get a 0))
+  else 
+    let tree_at_split i = 
+      let base = largest_exp_tree (Array.sub a ~pos:0 ~len:i) in 
+      let expon = largest_exp_tree (Array.sub a ~pos:i ~len:((Array.length a) - i)) in 
+      Tree (((get_label base) ** (get_label expon)), base, expon)
+    in 
+  let subts = Array.map ~f:(tree_at_split) (Array.init ~f:(fun x -> x+1) (Array.length a - 1)) in
+    (Option.value_exn (Array.max_elt subts ~compare:(fun a b -> (Int.compare (get_label a) (get_label b)))))
+  ;;
+```
 ## Summary
 
 Ocaml really give coders and readers a good experience in terms of readibility and simplicity, The errors are also easy to identify, not so easy to debug for me tho🙃. Some coding style I may consider use `$` and `@@` to avoid more parenthesis.
+
+**Updated...**
+
+The use of `List` or self-defined ADT are bug-free inclined, and error message is easy to identify, but when you use `Array` and slice is involved, the error message is just messy, hard to debug.
+
