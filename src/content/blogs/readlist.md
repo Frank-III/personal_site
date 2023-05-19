@@ -1,8 +1,8 @@
 ---
 title: "ReadList"
 description: Up-to-date readlist
-date: 05-10-2023
-modified: 05-10-2023
+date: 10-05-2023
+modified: 18-05-2023
 image: "header/readlist.png"
 pined: true
 ---
