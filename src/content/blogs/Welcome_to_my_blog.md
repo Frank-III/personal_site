@@ -30,4 +30,4 @@ And to host the website, I'm using GitHub🫡.
 
 ## How can I contact you ?
 
-You can contact me with [frankwaang@outlook.com](frankwaang@outlook.com). <br>
+You can contact me with [frankwaang@outlook.com](mailto:frankwaang@outlook.com). <br>

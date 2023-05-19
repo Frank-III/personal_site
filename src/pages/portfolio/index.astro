@@ -34,10 +34,10 @@ projects.sort((a, b) => {
   {
     projects.map((project) => {
       const started = dayjs(project.data.started, "DD-MM-YYYY").format(
-        "DD/MM/YYYY"
+        "MM/DD/YYYY"
       );
       const ended = project.data.finished
-        ? dayjs(project.data.finished, "DD-MM-YYYY").format("DD/MM/YYYY")
+        ? dayjs(project.data.finished, "DD-MM-YYYY").format("MM/DD/YYYY")
         : "?";
       const dateString = `${started} - ${ended}`;
       return (

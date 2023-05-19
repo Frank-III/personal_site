@@ -29,7 +29,7 @@ class={ishome ? "article inline-block w-[100%] sm:w-[48%] bg-white/5 p-4 rounded
   <p class={ishome ? "text-xs md:text-sm text-white/40" : "text-sm text-white/40"}>{blog.description}</p>
   <p class={ishome ? "text-white/50 mt-2 text-xs text-right": "text-white/50 mt-3 text-right"}>
     {dayjs(blog.date, "YYYY-MM-DD")
-      .format("DD/MM/YYYY")
+      .format("MM/DD/YYYY")
       .toString()}
   </p>
 </div>

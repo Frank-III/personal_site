@@ -1,5 +1,5 @@
 ---
-title: "Tress in Ocaml"
+title: "Trees in Ocaml"
 description: Tress in Ocaml
 date: 17-05-2023
 modified: 18-05-2023
