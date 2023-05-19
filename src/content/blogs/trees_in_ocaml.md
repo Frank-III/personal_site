@@ -1,8 +1,8 @@
 ---
 title: "Tress in Ocaml"
 description: Tress in Ocaml
-date: 05-17-2023
-modified: 05-17-2023
+date: 17-05-2023
+modified: 18-05-2023
 image: "header/tree_ocaml.png"
 pined: false 
 ---
