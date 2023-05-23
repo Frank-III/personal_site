@@ -5,6 +5,7 @@ started: 15-02-2023
 projectLink: https://github.com/Frank-III/auto_transcriber
 image: "header/autotranscriber.png"
 language: Python
+status: 🚧
 ---
 
 # AutoTranscriber 

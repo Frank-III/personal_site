@@ -55,7 +55,7 @@ projects.sort((a, b) => {
               id="title"
               class="text-xl tracking-tighter font-semibold text-white/80"
             >
-              {project.data.title}
+              {project.data.title + "   " + project.data.status}
             </h2>
             <Icon weight="25" height="30" pack="logos" name={project.data.language?.toLowerCase()} class="self-end"/>
             <p class="text-neutral-500 text-sm">

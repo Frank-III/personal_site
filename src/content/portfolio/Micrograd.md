@@ -6,6 +6,7 @@ finished: 10-09-2022
 projectLink: https://pacifiscan.org
 image: "header/Micrograd.png"
 language: Julia
+status: ✅
 ---
 
 # Micrograd.jl
