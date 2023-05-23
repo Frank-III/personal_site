@@ -6,7 +6,7 @@ export const blogschema = z.object({
     date: z.string(),
     modified: z.string(),
     image: z.string(),
-    pined: z.boolean()
+    pined: z.boolean(),
   })
 
 export const portfolioschema = z.object({
@@ -16,7 +16,8 @@ export const portfolioschema = z.object({
     finished: z.string().optional(),
     image: z.string(),
     projectLink: z.string().url(),
-    language: z.enum(["Ocaml", "Julia", "Python", "Typescript", "C++"]).optional()
+    language: z.enum(["Ocaml", "Julia", "Python", "Typescript", "C++"]).optional(),
+    status: z.string().emoji()
   })
 
 
