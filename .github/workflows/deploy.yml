@@ -5,6 +5,11 @@ on:
   # Using a different branch name? Replace `main` with your branch’s name
   push:
     branches: [ master ]
+  
+  pull_request:
+    branches:
+      - master
+  
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
   
