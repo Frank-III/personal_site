@@ -2,6 +2,9 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import dayjs from "dayjs"
 import customParseFormat from "dayjs/plugin/customParseFormat";
+import sanitizeHtml from 'sanitize-html';
+import MarkdownIt from 'markdown-it';
+const parser = new MarkdownIt();
 dayjs.extend(customParseFormat);
 
 export async function get(context) {
@@ -17,6 +20,7 @@ export async function get(context) {
       description: post.data.description,
       // Compute RSS link from post `slug`
       // This example assumes all posts are rendered as `/blog/[slug]` routes
+      content: sanitizeHtml(parser.render(post.body)),
       link: `/personal_site/blogs/${post.slug}/`,
     })),
   });
