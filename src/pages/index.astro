@@ -14,10 +14,10 @@ const blogs = await getCollection("blogs");
 // Parse the date of each article, sort by date descending and return an array of the 4 last articles
 const sortedblogs = blogs
   .map((blog) => {
-    const { title, date, description, image } = blog.data;
+    const { title, modified, description, image } = blog.data;
     return {
       title,
-      date: dayjs(date, "DD-MM-YYYY").format("YYYY-MM-DD"),
+      date: dayjs(modified, "DD-MM-YYYY").format("YYYY-MM-DD"),
       description,
       url: blog.slug,
       image: image,

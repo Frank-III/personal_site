@@ -2,11 +2,19 @@
 title: "ReadList"
 description: Up-to-date readlist
 date: 10-05-2023
-modified: 18-05-2023
+modified: 29-05-2023
 image: "header/readlist.png"
 pined: true
 ---
 (keep updated...)
+
+## Updated 2023/5/29
+Spent several days on reading `Telegraml` source code(a lib that build telegram bot), frustrated by not understanding how api gets called...
+
+Read an excellent blog from JaneStreet [Oxidizing Ocaml: Locality](https://blog.janestreet.com/oxidizing-ocaml-locality/) talking about their approach for better `GC`, and been back to `GADT` from 
+*Real World Ocaml* (have a better grasp now as I am more comfortable with Ocaml Syntax).
+
+Next article would be about either GADT or Backtracking(yeah I start learning algos again, see how far I could go this time)
 
 ## Updated 2023/5/17
 I post some interesting tree structures today, check it out: [Trees In Ocaml](/personal_site/blogs/trees_in_ocaml)
@@ -17,7 +25,7 @@ I've been up to `Ocaml` or more generally Functional Programming for a while. Be
 
 | clickable title | content | level | 
 | --------------- | ------- | ----- |
-| [Real Word Ocaml](https://dev.realworldocaml.org/index.html) | Useful, Real-world example of Ocaml | ⭐⭐⭐ |
+| [Real World Ocaml](https://dev.realworldocaml.org/index.html) | Useful, Real-world example of Ocaml | ⭐⭐⭐ |
 | [OCaml Programming: Correct + Efficient + Beautiful](https://cs3110.github.io/textbook/chapters/ds/memoization.html) | Intro Level FP course | ⭐ | 
 | [CS3110: 15SP](https://www.cs.cornell.edu/courses/cs3110/2015sp/recitations/9/rec09.html) | Previous material of the second one, very useful | ⭐⭐ | 
 
