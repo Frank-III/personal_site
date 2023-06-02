@@ -4,10 +4,10 @@ import Layout from "../layouts/Global.astro";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 dayjs.extend(customParseFormat);
-import { getCollection, CollectionEntry} from 'astro:content';
-import type {blogg} from '../schemas'
-import {filterblog} from '../utils'
-import ContentBlock from '../components/ContentBlock.astro'
+import { getCollection, CollectionEntry } from "astro:content";
+import type { blogg } from "../schemas";
+import { filterblog } from "../utils";
+import ContentBlock from "../components/ContentBlock.astro";
 // Return the list of articles in the "articles" directory
 const blogs = await getCollection("blogs");
 
@@ -28,7 +28,9 @@ const sortedblogs = blogs
   })
   .splice(0, 5);
 
-const [pined, unpined] = filterblog(sortedblogs, (blog) => {return blog.pined});;
+const [pined, unpined] = filterblog(sortedblogs, (blog) => {
+  return blog.pined;
+});
 ---
 
 <Layout
@@ -59,15 +61,7 @@ const [pined, unpined] = filterblog(sortedblogs, (blog) => {return blog.pined});
     {sortedblogs.length > 1 ? "Latest blogs" : "Latest blog"}
   </h2>
   <div class="flex flex-wrap gap-3">
-    {
-      pined.map((blog) => (
-        <ContentBlock blog={blog} ishome={true}/>
-      ))
-    }
-    {
-      unpined.map((blog) => (
-        <ContentBlock blog={blog} ishome={true}/>
-        ))
-    }
+    {pined.map((blog) => <ContentBlock blog={blog} ishome={true} />)}
+    {unpined.map((blog) => <ContentBlock blog={blog} ishome={true} />)}
   </div>
 </Layout>

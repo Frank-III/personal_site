@@ -3,11 +3,11 @@ import { string } from "astro/zod";
 import Layout from "../layouts/Global.astro";
 
 // const {title, image, date, modified, description} = Astro.props;
-const {content} = Astro.props;
-const {data, slug} = content;
+const { content } = Astro.props;
+const { data, slug } = content;
 //headings
 interface Heading {
-  depth: number; 
+  depth: number;
   text: string;
   slug: string;
 }
@@ -15,10 +15,7 @@ interface Heading {
 const { headings } = await content.render();
 ---
 
-<Layout
-  title={data.title}
-  description={data.description}
->
+<Layout title={data.title} description={data.description}>
   <!-- We need to use is:inline in order to apply the style to the children -->
   <style is:inline>
     article h1,
@@ -182,26 +179,28 @@ const { headings } = await content.render();
       {data.description}
     </p>
     <div class="gap-x-10 lg:flex lg:items-start">
-		{
-			!!headings.length && (
-				<aside class="sticky top-20 order-2 -me-32 hidden basis-64 lg:block">
-					<h2 class="font-semibold">Table of Contents</h2>
-					<ul class="mt-4 text-sm">
-						{headings.map(({ depth, slug, text }: Heading) => (
-							<li class="headingl line-clamp-2">
-								<a
-									class={`block ${depth <= 2 ? "mt-3" : "mt-2 ps-3 text-[0.7875rem]"}`}
-									href={`#${slug}`}
-									aria-label={`Scroll to section: ${text}`}
-								>
-									<span>{"#".repeat(depth)}</span> {text}
-								</a>
-							</li>
-						))}
-					</ul>
-				</aside>
-			)
-		}
+      {
+        !!headings.length && (
+          <aside class="sticky top-20 order-2 -me-32 hidden basis-64 lg:block">
+            <h2 class="font-semibold">Table of Contents</h2>
+            <ul class="mt-4 text-sm">
+              {headings.map(({ depth, slug, text }: Heading) => (
+                <li class="headingl line-clamp-2">
+                  <a
+                    class={`block ${
+                      depth <= 2 ? "mt-3" : "mt-2 ps-3 text-[0.7875rem]"
+                    }`}
+                    href={`#${slug}`}
+                    aria-label={`Scroll to section: ${text}`}
+                  >
+                    <span>{"#".repeat(depth)}</span> {text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </aside>
+        )
+      }
     </div>
     <article class="mb-8">
       <slot />

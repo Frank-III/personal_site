@@ -45,7 +45,7 @@ const sortedblogs = sort_(posts);
   <div class="flex flex-wrap gap-3">
     {
       sortedblogs.map((blog) => (
-        <ContentBlock blog={blog} ishome={}/>
+        <ContentBlock blog={blog} ishome={false}/>
       ))
     }
   </div>

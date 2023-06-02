@@ -1,19 +1,19 @@
 ---
-import Layout from '../../layouts/Global.astro';
-import ContentBlock from '../../components/ContentBlock.astro'
-import { getCollection, z } from 'astro:content';
-import type {blogg} from '../../schemas'
+import Layout from "../../layouts/Global.astro";
+import ContentBlock from "../../components/ContentBlock.astro";
+import { getCollection, z } from "astro:content";
+import type { blogg } from "../../schemas";
 
-import {filterblog, sort_} from '../../utils'
+import { filterblog, sort_ } from "../../utils";
 const blogs = await getCollection("blogs");
 
 const sortedblogs = sort_(blogs, true);
 
-const uniqueTags = [
-    ...new Set(blogs.map((blog) => blog.data.tags).flat())];
+const uniqueTags = [...new Set(blogs.map((blog) => blog.data.tags).flat())];
 
-const [pined, unpined] = filterblog(sortedblogs, (blog) => {return blog.pined});;
-
+const [pined, unpined] = filterblog(sortedblogs, (blog) => {
+  return blog.pined;
+});
 ---
 
 <Layout
@@ -23,42 +23,39 @@ const [pined, unpined] = filterblog(sortedblogs, (blog) => {return blog.pined});
   <h1
     class="text-xl md:text-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent"
   >
-  My latest article
+    My latest article
   </h1>
   <p class="text-neutral-400 text-sm mt-1 mb-1">
-    I may write when I don't have a good mood<br>
+    I may write when I don't have a good mood<br />
   </p>
   <div class="tags">
-      <p class="p-y[0.5rem]">Tags:</p>
-      {
-        uniqueTags.map((tag) => (
-          <p class="tag">
-            <a class="ll text-neutral-200 decoration-dashed underline font-semibold" href={`/personal_site/blogs/tags/${tag}`}>{tag}</a>
-          </p>
-        ))
-      }
-  </div>
-  <div class="flex flex-wrap gap-3">
+    <p class="p-y[0.5rem]">Tags:</p>
     {
-      pined.map((blog) => (
-        <ContentBlock blog={blog} ishome={false}/>
+      uniqueTags.map((tag) => (
+        <p class="tag">
+          <a
+            class="ll text-neutral-200 decoration-dashed underline font-semibold"
+            href={`/personal_site/blogs/tags/${tag}`}
+          >
+            {tag}
+          </a>
+        </p>
       ))
     }
-    {
-      unpined.map((blog) => (
-        <ContentBlock blog={blog} ishome={false}/>
-        ))
-    }
+  </div>
+  <div class="flex flex-wrap gap-3">
+    {pined.map((blog) => <ContentBlock blog={blog} ishome={false} />)}
+    {unpined.map((blog) => <ContentBlock blog={blog} ishome={false} />)}
   </div>
 </Layout>
 
 <style>
   .tags {
-      display: flex;
-      flex-wrap: wrap;
-      margin: 0 auto;
-      margin-bottom: 0.75rem;
-    }
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    margin-bottom: 0.75rem;
+  }
 
   .tag {
     /* margin: 0.25em;
@@ -69,13 +66,12 @@ const [pined, unpined] = filterblog(sortedblogs, (blog) => {return blog.pined});
     /* background-image: linear-gradient(120deg, #c767f7 0%, #f980b4 100%); */
   }
   .tag :hover {
-      background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-fill-color: transparent;
-      text-decoration: none;
-      transition: all 0.25s ease-in-out;
+    background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    text-decoration: none;
+    transition: all 0.25s ease-in-out;
   }
-
 </style>
