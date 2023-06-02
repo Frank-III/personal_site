@@ -31,7 +31,7 @@ const sortedblogs = posts.map((blog) => {
       title,
       date: dayjs(date, "DD-MM-YYYY").format("YYYY-MM-DD"),
       description,
-      url: blog.slug,
+      url: '../' + blog.slug,
       image: image,
       pined: pined
     } as blogg;
@@ -39,6 +39,8 @@ const sortedblogs = posts.map((blog) => {
   .sort((a, b) => {
     return dayjs(b.date).diff(dayjs(a.date));
   });
+
+// console.log(sortedblogs[0])
 ---
 
 <Layout
@@ -56,7 +58,7 @@ const sortedblogs = posts.map((blog) => {
   <div class="flex flex-wrap gap-3">
     {
       sortedblogs.map((blog) => (
-        <ContentBlock blog={blog} ishome={false}/>
+        <ContentBlock blog={blog} ishome={}/>
       ))
     }
   </div>

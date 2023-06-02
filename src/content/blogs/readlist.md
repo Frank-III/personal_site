@@ -5,7 +5,7 @@ date: 10-05-2023
 modified: 29-05-2023
 image: "header/readlist.png"
 pined: true
-tags: ['Programming', 'Ocaml']
+tags: ['Programming', 'Ocaml', 'Pined']
 ---
 (keep updated...)
 
