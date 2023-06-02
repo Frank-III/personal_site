@@ -24,7 +24,7 @@ export function sort_(inputs: CollectionEntry<"blogs">[], redirect: Boolean = fa
       title,
       date: dayjs(date, "DD-MM-YYYY").format("YYYY-MM-DD"),
       description,
-      url: redirect ? input.slug : '../' + input.slug,
+      url: redirect ? '../' + input.slug : input.slug,
       image: image,
       pined: pined
     } as blogg;
