@@ -1,29 +1,16 @@
 ---
-import Layout from "../../layouts/Global.astro";
+import Layout from '../../layouts/Global.astro';
 import ContentBlock from '../../components/ContentBlock.astro'
-import dayjs from "dayjs";
-import customParseFormat from "dayjs/plugin/customParseFormat";
-dayjs.extend(customParseFormat);
-import { getCollection, CollectionEntry, z } from "astro:content";
+import { getCollection, z } from 'astro:content';
 import type {blogg} from '../../schemas'
 
-import {filterblog} from '../../utils'
+import {filterblog, sort_} from '../../utils'
 const blogs = await getCollection("blogs");
 
-const sortedblogs = blogs.map((blog) => {
-    const { title, date, description, image, pined } = blog.data;
-    return {
-      title,
-      date: dayjs(date, "DD-MM-YYYY").format("YYYY-MM-DD"),
-      description,
-      url: blog.slug,
-      image: image,
-      pined: pined
-    } as blogg;
-  })
-  .sort((a, b) => {
-    return dayjs(b.date).diff(dayjs(a.date));
-  });
+const sortedblogs = sort_(blogs, true);
+
+const uniqueTags = [
+    ...new Set(blogs.map((blog) => blog.data.tags).flat())];
 
 const [pined, unpined] = filterblog(sortedblogs, (blog) => {return blog.pined});;
 
@@ -38,9 +25,19 @@ const [pined, unpined] = filterblog(sortedblogs, (blog) => {return blog.pined});
   >
   My latest article
   </h1>
-  <p class="text-neutral-400 text-sm mt-1 mb-6">
+  <p class="text-neutral-400 text-sm mt-1 mb-1">
     I may write when I don't have a good mood<br>
   </p>
+  <div class="tags">
+      <p class="p-y[0.5rem]">Tags:</p>
+      {
+        uniqueTags.map((tag) => (
+          <p class="tag">
+            <a class="ll text-neutral-200 decoration-dashed underline font-semibold" href={`/personal_site/blogs/tags/${tag}`}>{tag}</a>
+          </p>
+        ))
+      }
+  </div>
   <div class="flex flex-wrap gap-3">
     {
       pined.map((blog) => (
@@ -54,3 +51,31 @@ const [pined, unpined] = filterblog(sortedblogs, (blog) => {return blog.pined});
     }
   </div>
 </Layout>
+
+<style>
+  .tags {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 auto;
+      margin-bottom: 0.75rem;
+    }
+
+  .tag {
+    /* margin: 0.25em;
+    border: dotted 1px #a1a1a1;
+    border-radius: 1em; */
+    padding: 0.5em 0.5em;
+    font-size: 1em;
+    /* background-image: linear-gradient(120deg, #c767f7 0%, #f980b4 100%); */
+  }
+  .tag :hover {
+      background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      text-decoration: none;
+      transition: all 0.25s ease-in-out;
+  }
+
+</style>
