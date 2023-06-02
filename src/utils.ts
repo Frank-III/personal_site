@@ -1,5 +1,8 @@
 import type { blogg } from "./schemas";
-import {CollectionEntry}  from 'astro:content'
+import type {CollectionEntry}  from 'astro:content'
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+dayjs.extend(customParseFormat);
 
 export function filterblog( blogs: blogg[], cond: (obj: blogg) => boolean) {
   const satisfied = Array<blogg>();
@@ -14,18 +17,14 @@ export function filterblog( blogs: blogg[], cond: (obj: blogg) => boolean) {
   return [satisfied, unsatisfied];
 }
 
-export function sort_(inputs: CollectionEntry<"blogs">[]): blogg[] {
-
-}
-
-
-const sortedblogs = blogs.map((blog) => {
-    const { title, date, description, image, pined } = blog.data;
+export function sort_(inputs: CollectionEntry<"blogs">[], redirect:Boolean=false): blogg[] {
+  return inputs.map((input) => {
+    const { title, date, description, image, pined } = input.data;
     return {
       title,
       date: dayjs(date, "DD-MM-YYYY").format("YYYY-MM-DD"),
       description,
-      url: blog.slug,
+      url: redirect? input.slug : '../' + input.slug,
       image: image,
       pined: pined
     } as blogg;
@@ -33,3 +32,6 @@ const sortedblogs = blogs.map((blog) => {
   .sort((a, b) => {
     return dayjs(b.date).diff(dayjs(a.date));
   });
+}
+
+

@@ -1,29 +1,13 @@
 ---
 import Layout from '../../layouts/Global.astro';
 import ContentBlock from '../../components/ContentBlock.astro'
-import dayjs from "dayjs";
-import customParseFormat from 'dayjs/plugin/customParseFormat';
-dayjs.extend(customParseFormat);
-import { getCollection, CollectionEntry, z } from 'astro:content';
+import { getCollection, z } from 'astro:content';
 import type {blogg} from '../../schemas'
 
-import {filterblog} from '../../utils'
+import {filterblog, sort_} from '../../utils'
 const blogs = await getCollection("blogs");
 
-const sortedblogs = blogs.map((blog) => {
-    const { title, date, description, image, pined } = blog.data;
-    return {
-      title,
-      date: dayjs(date, "DD-MM-YYYY").format("YYYY-MM-DD"),
-      description,
-      url: blog.slug,
-      image: image,
-      pined: pined
-    } as blogg;
-  })
-  .sort((a, b) => {
-    return dayjs(b.date).diff(dayjs(a.date));
-  });
+const sortedblogs = sort_(blogs, true);
 
 const uniqueTags = [
     ...new Set(blogs.map((blog) => blog.data.tags).flat())];
@@ -49,7 +33,7 @@ const [pined, unpined] = filterblog(sortedblogs, (blog) => {return blog.pined});
       {
         uniqueTags.map((tag) => (
           <p class="tag">
-            <a class="ll underline" href={`/personal_site/blogs/tags/${tag}`}>{tag}</a>
+            <a class="ll text-neutral-200 decoration-dashed underline font-semibold" href={`/personal_site/blogs/tags/${tag}`}>{tag}</a>
           </p>
         ))
       }
