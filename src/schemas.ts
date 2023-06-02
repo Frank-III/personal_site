@@ -7,6 +7,7 @@ export const blogschema = z.object({
     modified: z.string(),
     image: z.string(),
     pined: z.boolean(),
+    tags: z.string().array()
   })
 
 export const portfolioschema = z.object({
