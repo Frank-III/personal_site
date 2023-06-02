@@ -7,7 +7,7 @@ import type { blogg } from "../../schemas";
 import { filterblog, sort_ } from "../../utils";
 const blogs = await getCollection("blogs");
 
-const sortedblogs = sort_(blogs, true);
+const sortedblogs = sort_(blogs, false);
 
 const uniqueTags = [...new Set(blogs.map((blog) => blog.data.tags).flat())];
 
