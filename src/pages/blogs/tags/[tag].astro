@@ -1,0 +1,63 @@
+---
+import Layout from "../../../layouts/Global.astro"
+import { getCollection, CollectionEntry } from "astro:content";
+import ContentBlock from '../../../components/ContentBlock.astro'
+import type {blogg} from '../../../schemas'
+
+import dayjs from "dayjs";
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+dayjs.extend(customParseFormat);
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection("blogs");
+  const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post) =>
+      post.data.tags.includes(tag)
+    );
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props; 
+const sortedblogs = posts.map((blog) => {
+    const { title, date, description, image, pined } = blog.data;
+    return {
+      title,
+      date: dayjs(date, "DD-MM-YYYY").format("YYYY-MM-DD"),
+      description,
+      url: blog.slug,
+      image: image,
+      pined: pined
+    } as blogg;
+  })
+  .sort((a, b) => {
+    return dayjs(b.date).diff(dayjs(a.date));
+  });
+---
+
+<Layout
+  title="Frank"
+  description="I'm Frank. I occasionally publish articles about programming and tech."
+>
+  <h1
+    class="text-xl md:text-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent"
+  >
+  Article with Tag: {tag}
+  </h1>
+  <p class="text-neutral-400 text-sm mt-1 mb-3">
+    I may write when I don't have a good mood<br>
+  </p>
+  <div class="flex flex-wrap gap-3">
+    {
+      sortedblogs.map((blog) => (
+        <ContentBlock blog={blog} ishome={false}/>
+      ))
+    }
+  </div>
+</Layout>

@@ -5,7 +5,7 @@ date: 17-05-2023
 modified: 18-05-2023
 image: "header/tree_ocaml.png"
 pined: false 
-tags: ['Tree Structure', 'Ocaml', 'Algorithm']
+tags: ['Tree', 'Ocaml', 'Algorithm']
 ---
 
 ## Intro briefly
