@@ -24,19 +24,23 @@ const { Content } = await blog.render();
 
 <Layout content={blog}>
   <Content />
-  <div class="tags flex">
-    <p class="text-neutral-400 p-y[0.7rem] text-sm">Related Tags:</p>
-    {
-      blog.data.tags.map((tag) => (
-        <p class="tag p-[0.5rem]">
-          <a
-            class="ll text-neutral-400 decoration-dashed underline font-semibold text-sm"
-            href={`/personal_site/blogs/tags/${tag}`}
-          >
-            #{tag}
-          </a>
-        </p>
-      ))
-    }
+
+  <div class="redirect m-0">
+    <div class="tags flex pb-[0]">
+      <p class="text-neutral-400 p-y[0.3rem] text-sm">&gt Related Tags:&nbsp</p>
+      {
+        blog.data.tags.map((tag) => (
+          <p class="tag p-[0.2rem]">
+            <a
+              class="ll text-neutral-400 decoration-dashed underline font-semibold text-sm"
+              href={`/personal_site/blogs/tags/${tag}`}
+            >
+              #{tag}
+            </a>
+          </p>
+        ))
+      }
+    </div>
+    <a class="decoration-none" href="/personal_site/">&gt cd</a>
   </div>
 </Layout>
