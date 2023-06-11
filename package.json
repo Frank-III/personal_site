@@ -11,19 +11,20 @@
   },
   "dependencies": {
     "@astrojs/rss": "^2.4.3",
-    "@radix-ui/colors": "^0.1.8",
-    "@radix-ui/react-avatar": "^1.0.3",
+    "@astrojs/svelte": "^3.0.0",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
-    "astro": "^2.3.0",
+    "astro": "^2.6.3",
     "astro-icon": "^0.8.0",
     "dayjs": "^1.11.7",
     "framer-motion": "^10.12.16",
     "markdown-it": "^13.0.1",
+    "radix-svelte": "^0.7.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "rough-notation": "^0.5.1",
-    "sanitize-html": "^2.10.0"
+    "sanitize-html": "^2.10.0",
+    "svelte": "^3.55.0"
   },
   "devDependencies": {
     "@astrojs/react": "^2.1.1",
