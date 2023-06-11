@@ -10,6 +10,12 @@ import { Icon } from 'astro-icon'
 
 const projects = await getCollection("portfolio");
 
+// one day would support multi-lang projects
+const unique_lang = [...new Set(projects.map(({data}) => {
+  return data.language;
+}))]
+
+
 projects.sort((a, b) => {
   const aDate = dayjs(a.data.started, "DD-MM-YYYY");
   const bDate = dayjs(b.data.started, "DD-MM-YYYY");
@@ -30,7 +36,16 @@ projects.sort((a, b) => {
     This page compiles the list of the projects I have created. If you are a
     recruiter, feel free to check my experiences here.
   </p>
-
+  <div class="tags">
+    <p class="p-y[0.5rem]">Languages:</p>
+    {
+      unique_lang.map((lang) => (
+        <p class="tag text-neutral-200 decoration-dashed underline font-semibold">
+          {lang}
+        </p>
+      ))
+    }
+  </div>
   {
     projects.map((project) => {
       const started = dayjs(project.data.started, "DD-MM-YYYY").format(
@@ -74,6 +89,23 @@ projects.sort((a, b) => {
 </Layout>
 
 <style lang="css">
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    margin-bottom: 0.75rem;
+  }
+
+  .tag {
+    /* margin: 0.25em;
+    border: dotted 1px #a1a1a1;
+    border-radius: 1em; */
+    padding: 0.5em 0.5em;
+    font-size: 1em;
+    /* background-image: linear-gradient(120deg, #c767f7 0%, #f980b4 100%); */
+  }
+  .tag :hover {
+  }
   #title {
     margin-top: 0;
   }
