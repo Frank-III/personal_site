@@ -50,6 +50,7 @@
 						<div class="font-bold text-black">Mood: 😶‍🌫️</div>
 						<div class="font-light text-zinc-600">Reading 📚: Real Wolrd Ocaml</div>
 						<div class="font-light text-zinc-600">Watch 🎬: SpiderMan ⭐⭐⭐⭐⭐</div>
+						<div class="font-light text-zinc-600">Learning 👨‍💻: Ocaml, Rust, Backtracking</div>
 					</div>
 				</div>
 				<div class="m-0 text-zinc-700">
