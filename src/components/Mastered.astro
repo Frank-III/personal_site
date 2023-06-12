@@ -1,0 +1,22 @@
+---
+import { Icon } from "astro-icon";
+
+interface Props {
+  logo: string;
+}
+
+const { logo } = Astro.props;
+---
+
+<li class="flex items-center gap-4">
+  <span
+    class="w-11 h-11 flex items-center justify-center border-t border-zinc-700 border-transparent shadow shadow-none bg-zinc-800 rounded-full"
+    ><Icon name={logo} class="w-6" />
+  </span>
+</li>
+
+<style is:global>
+  [astro-icon="simple-icons:astro"] {
+    text-white;
+  }
+</style>
