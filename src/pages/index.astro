@@ -58,4 +58,9 @@ const [pined, unpined] = filterblog(sortedblogs, (blog) => {
     {pined.map((blog) => <ContentBlock blog={blog} ishome={true} />)}
     {unpined.map((blog) => <ContentBlock blog={blog} ishome={true} />)}
   </div>
+  <div class="flex justify-center py-5">
+    <a href="/personal_site/blogs" class="text-zinc-300 text-center font-semibold w-[60%] sm:w-[24%] bg-white/5 px-2 py-1 rounded-lg hover:scale-105 transition-transform duration-150 ease-in-out">
+      View more 
+    </a>
+  </div>
 </Layout>
