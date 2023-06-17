@@ -15,14 +15,38 @@ const { title, description, schema } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="color-scheme" content="dark light" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/personal_site/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title || "Frank W's Blog"}</title>
     <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/personal_site/favicon.svg" />
+    <style >
+      html {
+        visibility: hidden; 
+        opacity: 0;
+      }
+    </style>
+    <title>{title || "Frank W's Blog"}</title>
   </head>
 
   <body class="p-6 mx-auto min-h-screen">
     <style is:global>
+      :root {
+        --bg-color: #151e24; /*131618*/
+      }
+
+      html.dark {
+        background-color: var(--bg-color);
+      }
+      body {
+        max-width: 800px;
+      }
+
+      html {
+        background-color: #f9fcff;
+      }
+      main {
+        min-height: 74vh;
+      }
+
       /* inter-regular - latin */
       @font-face {
         font-family: "Inter";
@@ -72,23 +96,6 @@ const { title, description, schema } = Astro.props;
       }
 
       /* Define background color var */
-      :root {
-        --bg-color: #151e24; /*131618*/
-      }
-      html {
-        background-color: #f9fcff;
-      }
-
-      html.dark {
-        background-color: var(--bg-color);
-      }
-      body {
-        max-width: 800px;
-      }
-
-      main {
-        min-height: 74vh;
-      }
 
       h1,
       h2,
@@ -115,6 +122,10 @@ const { title, description, schema } = Astro.props;
         padding-inline-start: 16px;
         margin-left: 16px;
       }
+      html {
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
     </style>
     <NavBar />
     <main>
@@ -123,5 +134,6 @@ const { title, description, schema } = Astro.props;
     <footer class="pb-2 pt-12 text-center">
       <p class="text-white/40 text-sm">Created by Jiangda Wang</p>
     </footer>
+
   </body>
 </html>
