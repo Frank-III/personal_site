@@ -49,7 +49,7 @@
 }
 </style>
 
-<script>
+<script type="module">
   const theme = (() => {
     if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
       return localStorage.getItem("theme");
@@ -60,10 +60,11 @@
     return "light";
   })();
 
+  // Add the detected or stored theme class instead of removing
   if (theme === "light") {
-    document.documentElement.classList.remove("light");
+    document.documentElement.classList.add("light");
   } else {
-    document.documentElement.classList.remove("dark");
+    document.documentElement.classList.add("dark");
   }
 
   window.localStorage.setItem("theme", theme);
