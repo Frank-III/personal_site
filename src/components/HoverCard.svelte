@@ -41,7 +41,7 @@
 			sticky={contentSticky}
 			hideWhenDetached={contentHideWhenDetached}
 			avoidCollisions={contentAvoidCollisions}
-			class="w-80 rounded-sm bg-white p-5 shadow-sm"
+			class="w-80 rounded-sm dark:bg-white p-5 shadow-sm bg-[#fff8e7]"
 		>
 			<HoverCard.Arrow width={20} height={10} class="fill-white" />
 			<div class="flex flex-col gap-2">

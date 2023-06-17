@@ -45,13 +45,13 @@ const [pined, unpined] = filterblog(sortedblogs, (blog) => {
         class="lg:text-4xl md:text-3xl text-2xl font-bold text-black">👋</span
       >
     </h2>
-    <p class="text-md mt-2 text-white/60 text-sm">
+    <p class="text-md mt-2 text-dark/100 dark:text-white/60 text-sm">
       I'm Frank, a student major in Operation Reasearch at UIUC. <br />
       On this website, I publish articles about what I've discovered and created.
     </p>
   </div>
 
-  <h2 class="text-base md:text-xl mt-8 mb-4 text-white/90">
+  <h2 class="text-base md:text-xl mt-8 mb-4 text-dark/150 dark:text-white/90">
     {sortedblogs.length > 1 ? "Latest blogs" : "Latest blog"}
   </h2>
   <div class="flex flex-wrap gap-3">
@@ -59,7 +59,7 @@ const [pined, unpined] = filterblog(sortedblogs, (blog) => {
     {unpined.map((blog) => <ContentBlock blog={blog} ishome={true} />)}
   </div>
   <div class="flex justify-center py-5">
-    <a href="/personal_site/blogs" class="text-zinc-300 text-center font-semibold w-[60%] sm:w-[24%] bg-white/5 px-2 py-1 rounded-lg hover:scale-105 transition-transform duration-150 ease-in-out">
+    <a href="/personal_site/blogs" class="text-neutral-400 dark:text-zinc-300 text-center font-semibold w-[60%] sm:w-[24%] bg-black/3 dark:bg-white/5 px-2 py-1 rounded-lg hover:scale-105 transition-transform duration-150 ease-in-out">
       View more 
     </a>
   </div>

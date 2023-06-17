@@ -19,12 +19,6 @@ const { title, description, schema } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title || "Frank W's Blog"}</title>
     <meta name="description" content={description} />
-    <!-- To insert a Google Schema for articles -->
-    {
-      schema && (
-        <script type="application/ld+json">{JSON.stringify(schema)}</script>
-      )
-    }
   </head>
   <body class="p-6 mx-auto min-h-screen">
     <style is:global>
@@ -46,9 +40,9 @@ const { title, description, schema } = Astro.props;
         font-style: normal;
         font-weight: 500;
         src: local(""),
-          url("../fonts/inter-v12-latin-500.woff2") format("woff2"),
+          url("/personal_site/fonts/inter-v12-latin-500.woff2") format("woff2"),
           /* Chrome 26+, Opera 23+, Firefox 39+ */
-            url("../fonts/inter-v12-latin-500.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+            url("/personal_site/fonts/inter-v12-latin-500.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
         font-display: swap;
       }
 
@@ -81,6 +75,10 @@ const { title, description, schema } = Astro.props;
         --bg-color: #151e24; /*131618*/
       }
       html {
+        background-color: #f9fcff;
+      }
+
+      html.dark {
         background-color: var(--bg-color);
       }
       body {
@@ -107,7 +105,7 @@ const { title, description, schema } = Astro.props;
       a {
         font-family: "Inter", sans-serif;
         font-weight: 400;
-        color: white;
+        color: black;
         letter-spacing: -0.01em;
         transition: font-size 0.3s;
       }

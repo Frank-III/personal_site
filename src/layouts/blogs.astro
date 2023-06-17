@@ -25,26 +25,42 @@ const { headings } = await content.render();
     article h5,
     article h6 {
       font-weight: 700;
-      color: #ffffffde;
+      color: black;
       margin-bottom: 4px;
       margin-top: 32px;
     }
+
+    .dark article h1,
+    .dark article h2,
+    .dark article h3,
+    .dark article h4,
+    .dark article h5,
+    .dark article h6,
+    .dark article p {
+      color: white;
+    }
+
     article h1 {
       font-size: 28px;
     }
     article a {
       text-decoration: underline;
-      color: #b9b8b8;
+      color: rgb(82 82 91);;
     }
     article a:hover {
       /* Gradient */
-      background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+      background-image: linear-gradient(120deg, #ac4cb6 0%, #ff8393 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       text-fill-color: transparent;
       text-decoration: none;
       transition: all 0.25s ease-in-out;
+    }
+
+    .dark article a:hover {
+      /* Gradient */
+      background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
     }
 
     article h2 {
@@ -72,9 +88,54 @@ const { headings } = await content.render();
     article strong {
       font-size: 15px;
       font-weight: 400;
+      color: #383636;
+    }
+
+    .dark article li,
+    .dark article a,
+    .dark article span,
+    .dark article strong {
       color: #b9b8b8;
     }
+
     table {
+      width: 100%;
+      border-collapse: collapse;
+      color: #000; /* text color */
+      background-color: #e5e5e5; /* table color */
+      box-shadow: 0 0 0 1px #000 inset;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    table th,
+    table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* border color */
+    }
+
+    table th {
+      background-color: #c0c0c0; /* header color */
+    }
+
+    table td {
+      background-color: #f0f0f0; /* cell color */
+    }
+
+    table tr:hover {
+      background-color: rgba(0, 0, 0, 0.05); /* hover color */
+    }
+
+    table caption {
+      padding: 10px;
+      font-weight: bold;
+      font-size: 1.2em;
+      color: #000; /* caption text color */
+      background-color: #c0c0c0; /* caption background color */
+    }
+
+    .dark table {
       width: 100%;
       border-collapse: collapse;
       color: #fff;
@@ -84,26 +145,26 @@ const { headings } = await content.render();
       margin-bottom: 10px;
     }
 
-    table th,
-    table td {
+    .dark table th,
+    .dark table td {
       padding: 12px;
       text-align: left;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    table th {
+    .dark table th {
       background-color: #0f151b;
     }
 
-    table td {
+    .dark table td {
       background-color: #101820;
     }
 
-    table tr:hover {
+    .dark table tr:hover {
       background-color: rgba(255, 255, 255, 0.1);
     }
 
-    table caption {
+    .dark table caption {
       padding: 10px;
       font-weight: bold;
       font-size: 1.2em;
@@ -156,7 +217,7 @@ const { headings } = await content.render();
         iterations: 1,
         padding: 2,
         // Yellow for dark mode
-        color: "#f9f871",
+        color: "#ff7308",
       });
       annotation.show();
     });
@@ -169,7 +230,7 @@ const { headings } = await content.render();
     />
 
     <h1
-      class="text-xl mb-1 max-w-fit font-semibold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent md:text-2xl"
+      class="text-xl mb-1 max-w-fit font-semibold bg-gradient-to-r from-teal-500 to-purple-500 bg-clip-text text-transparent md:text-2xl"
     >
       {data.title}
     </h1>
@@ -181,7 +242,7 @@ const { headings } = await content.render();
     <div class="gap-x-10 lg:flex lg:items-start">
       {
         !!headings.length && (
-          <aside class="sticky top-20 order-2 -me-32 hidden basis-64 lg:block">
+          <aside class="sticky top-20 order-2 -me-32 hidden basis-64 lg:block text-zinc-700 dark:text-white/80">
             <h2 class="font-semibold">Table of Contents</h2>
             <ul class="mt-4 text-sm">
               {headings.map(({ depth, slug, text }: Heading) => (
@@ -211,12 +272,15 @@ const { headings } = await content.render();
 <style>
   .headingl:hover {
     /* Gradient */
-    background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+    background-image: linear-gradient(120deg, #ac4cb6 0%, #ff8393 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-fill-color: transparent;
     text-decoration: none;
     transition: all 0.25s ease-in-out;
+  }
+  .dark .heading:hover {
+    background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
   }
 </style>
