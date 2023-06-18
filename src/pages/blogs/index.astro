@@ -25,16 +25,16 @@ const [pined, unpined] = filterblog(sortedblogs, (blog) => {
   >
     My latest article
   </h1>
-  <p class="text-neutral-400 text-sm mt-1 mb-1">
+  <p class="text-zinc-600 dark:text-neutral-400 text-sm mt-1 mb-1">
     I may write when I don't have a good mood<br />
   </p>
   <div class="tags">
-    <p class="p-y[0.5rem]">Tags:</p>
+    <p class="p-y[0.5rem] text-zinc-600 dark:text-neutral-200">Tags:</p>
     {
       uniqueTags.map((tag) => (
         <p class="tag">
           <a
-            class="ll text-neutral-200 decoration-dashed underline font-semibold"
+            class="ll text-zinc-600 dark:text-neutral-400 underline"
             href={`/personal_site/blogs/tags/${tag}`}
           >
             {tag}
@@ -74,4 +74,7 @@ const [pined, unpined] = filterblog(sortedblogs, (blog) => {
     text-decoration: none;
     transition: all 0.25s ease-in-out;
   }
+  .dark .tag :hover {
+      background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+    }
 </style>

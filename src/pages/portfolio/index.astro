@@ -6,15 +6,18 @@ import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import { getCollection, CollectionEntry } from "astro:content";
 dayjs.extend(customParseFormat);
-import { Icon } from 'astro-icon'
+import { Icon } from "astro-icon";
 
 const projects = await getCollection("portfolio");
 
 // one day would support multi-lang projects
-const unique_lang = [...new Set(projects.map(({data}) => {
-  return data.language;
-}))]
-
+const unique_lang = [
+  ...new Set(
+    projects.map(({ data }) => {
+      return data.language;
+    })
+  ),
+];
 
 projects.sort((a, b) => {
   const aDate = dayjs(a.data.started, "DD-MM-YYYY");
@@ -32,15 +35,15 @@ projects.sort((a, b) => {
   >
     My portfolio
   </h1>
-  <p class="text-neutral-400 text-sm mt-1 mb-6">
+  <p class="text-neutral-800 dark:text-neutral-400 text-sm mt-1 mb-6">
     This page compiles the list of the projects I have created. If you are a
     recruiter, feel free to check my experiences here.
   </p>
   <div class="tags">
-    <p class="p-y[0.5rem]">Languages:</p>
+    <p class="p-y[0.5rem] text-zinc-600 dark:text-neutral-200">Languages:</p>
     {
       unique_lang.map((lang) => (
-        <p class="tag text-neutral-200 decoration-dashed underline font-semibold">
+        <p class="tag text-zinc-600 dark:text-neutral-200 underline">
           {lang}
         </p>
       ))
@@ -58,7 +61,7 @@ projects.sort((a, b) => {
       return (
         <a
           href={project.slug}
-          class="project flex gap-3 md:gap-4 flex-col md:flex-row items-start bg-white/5 hover:scale-[102%] my-4  rounded-xl  p-6"
+          class="project flex gap-3 md:gap-4 flex-col md:flex-row items-start bg-black/3 dark:bg-white/5 hover:scale-[102%] my-4  rounded-xl  p-6"
         >
           <img
             src={"/personal_site/images/" + project.data.image}
@@ -68,7 +71,7 @@ projects.sort((a, b) => {
           <div class="flex items-start justify-start flex-col self-stretch w-full">
             <h2
               id="title"
-              class="text-xl tracking-tighter font-semibold text-white/80"
+              class="text-xl tracking-tighter font-semibold text-dark/100 dark:text-white/80"
             >
               {project.data.title + "   " + project.data.status}
             </h2>
@@ -76,7 +79,13 @@ projects.sort((a, b) => {
               <p class="self-start text-neutral-500 text-sm">
                 {project.data.description}
               </p>
-              <Icon weight="25" height="30" pack="logos" name={project.data.language?.toLowerCase()} class="self-end"/>
+              <Icon
+                weight="25"
+                height="30"
+                pack="logos"
+                name={project.data.language?.toLowerCase()}
+                class="self-end"
+              />
             </div>
             <p class="md:text-sm text-xs  mt-4 md:mt-auto self-end text-neutral-400">
               {dateString}
@@ -113,6 +122,6 @@ projects.sort((a, b) => {
     transition: transform 0.15s ease-in-out;
   }
   [astro-icon] {
-    fill: rgba(82, 33, 174, 0.951)
+    fill: rgba(82, 33, 174, 0.951);
   }
 </style>
