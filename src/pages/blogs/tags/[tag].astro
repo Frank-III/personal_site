@@ -22,7 +22,7 @@ export async function getStaticPaths() {
 }
 
 const { tag} = Astro.params;
-const { posts, tags} = Astro.props;
+const { posts, tags } = Astro.props;
 const sortedblogs = sort_(posts, true);
 
 ---
@@ -53,6 +53,14 @@ const sortedblogs = sort_(posts, true);
           </p>
       ))
     }
+    <p class="tag">
+      <a
+          class="ll gradient-hover w-[100%] sm:w-[100%] bg-black/3 dark:bg-white/5 p-0.5 inline-block rounded-xl"
+          href={`/personal_site/blogs/`}
+      >
+      <svg class="text-zinc-600 dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m8 5l-5 5l5 5"/><path d="M3 10h8c5.523 0 10 4.477 10 10v1"/></g></svg>
+      </a>
+    </p>
   </div>
   <div class="content-container flex flex-wrap gap-3">
     {
