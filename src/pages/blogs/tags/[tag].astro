@@ -15,19 +15,16 @@ export async function getStaticPaths() {
       post.data.tags.includes(tag)
     );
     return {
-      params: { tag },
-      props: { posts: filteredPosts },
+      params: {tag},
+      props: { posts: filteredPosts, tags: uniqueTags.filter(x => { return x != tag})},
     };
   });
 }
 
-const { tag } = Astro.params;
-const { posts } = Astro.props; 
-
-
+const { tag} = Astro.params;
+const { posts, tags} = Astro.props;
 const sortedblogs = sort_(posts, true);
 
-// console.log(sortedblogs[0])
 ---
 
 <Layout
@@ -42,7 +39,22 @@ const sortedblogs = sort_(posts, true);
   <p class="text-neutral-400 text-sm mt-1 mb-3">
     I may write when I don't have a good mood<br>
   </p>
-  <div class="flex flex-wrap gap-3">
+  <div class="tags">
+    <p class="p-y[0.5rem] text-zinc-600 dark:text-neutral-200">Tags:</p>
+    {
+      tags.map((utag) => (
+          <p class="tag">
+            <a
+                class="ll text-zinc-600 dark:text-neutral-400 underline"
+                href={`/personal_site/blogs/tags/${utag}`}
+            >
+              {utag}
+            </a>
+          </p>
+      ))
+    }
+  </div>
+  <div class="content-container flex flex-wrap gap-3">
     {
       sortedblogs.map((blog) => (
         <ContentBlock blog={blog} ishome={false}/>
@@ -52,6 +64,34 @@ const sortedblogs = sort_(posts, true);
 </Layout>
 
 <style>
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    margin-bottom: 0.75rem;
+  }
+
+  .tag {
+    /* margin: 0.25em;
+    border: dotted 1px #a1a1a1;
+    border-radius: 1em; */
+    padding: 0.5em 0.5em;
+    font-size: 1em;
+    /* background-image: linear-gradient(120deg, #c767f7 0%, #f980b4 100%); */
+  }
+  .tag :hover {
+    background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    text-decoration: none;
+    transition: all 0.25s ease-in-out;
+  }
+  .dark .tag :hover {
+    background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+  }
+
   .tag-name {
     text-decoration: none;
     font-weight: 700;

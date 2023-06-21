@@ -17,13 +17,14 @@ const { title, description, schema } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/personal_site/favicon.svg" />
-    <style >
+    <meta name="view-transition" content="same-origin" />
+    <style is:inline>
       html {
         visibility: hidden; 
         opacity: 0;
       }
     </style>
+    <link rel="icon" type="image/svg+xml" href="/personal_site/favicon.svg" />
     <title>{title || "Frank W's Blog"}</title>
   </head>
 
@@ -148,9 +149,38 @@ const { title, description, schema } = Astro.props;
         visibility: visible !important;
         opacity: 1 !important;
       }
+
+      /* .content-container {
+        view-transition-name: content-blocks
+      }
+      @keyframes slide-left {
+        from {
+          left: 0%;
+        }
+        to {
+          left: -100%;
+        }
+      }
+
+      @keyframes slide-right {
+        from {
+          left: 100%;
+        }
+        to {
+          left: 0%;
+        }
+      }
+
+      ::view-transition-old(content-blocks) {
+        animation-name: slide-left;
+      }
+
+      ::view-transition-new(content-blocks) {
+        animation-name: slide-right;
+      } */
     </style>
     <NavBar />
-    <main>
+    <main >
       <slot />
     </main>
     <footer class="pb-2 pt-12 text-center">
