@@ -43,7 +43,7 @@ const [pined, unpined] = filterblog(sortedblogs, (blog) => {
       ))
     }
   </div>
-  <div class="flex flex-wrap gap-3">
+  <div class="content-container flex flex-wrap gap-3">
     {pined.map((blog) => <ContentBlock blog={blog} ishome={false} />)}
     {unpined.map((blog) => <ContentBlock blog={blog} ishome={false} />)}
   </div>
