@@ -45,7 +45,7 @@ const { headings } = await content.render();
     }
     article a {
       text-decoration: underline;
-      color: rgb(82 82 91);;
+      color: rgb(82 82 91);
     }
     article a:hover {
       /* Gradient */
@@ -99,6 +99,8 @@ const { headings } = await content.render();
     }
 
     table {
+      display: block;
+      overflow-x: auto;
       width: 100%;
       border-collapse: collapse;
       color: #000; /* text color */
@@ -180,7 +182,7 @@ const { headings } = await content.render();
       padding-inline: 1rem;
     }
     /* For mobile screen */
-    @media (max-width: 640px) {
+    @media (max-width: 600px) {
       article h1 {
         font-size: 24px;
       }
@@ -204,6 +206,14 @@ const { headings } = await content.render();
         font-weight: 400;
         color: #b9b8b8;
         font-size: 14px;
+      }
+      table th,
+      table td {
+        padding: 6px; /* reduce padding on smaller screens */
+      }
+
+      table caption {
+        font-size: 1em; /* reduce caption font size on smaller screens */
       }
     }
   </style>
