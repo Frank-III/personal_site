@@ -253,18 +253,18 @@ const { headings } = await content.render();
       {
         !!headings.length && (
           <aside class="sticky top-20 order-2 -me-32 hidden basis-64 lg:block text-zinc-700 dark:text-white/80">
-            <h2 class="font-semibold">Table of Contents</h2>
+            <h3 class="font-semibold">Table of Contents</h3>
             <ul class="mt-4 text-sm">
               {headings.map(({ depth, slug, text }: Heading) => (
-                <li class="headingl line-clamp-2 text-zinc-700 dark:text-white/80">
+                <li class="headingl line-clamp-2 text-zinc-700 dark:text-white/80 hover:scale-105">
                   <a
                     class={`block ${
-                      depth <= 2 ? "mt-3" : "mt-2 ps-3 text-[0.7875rem]"
+                      depth <= 2 ? "mt-2" : "mt-1 ps-3 text-[0.7875rem]"
                     }`}
                     href={`#${slug}`}
                     aria-label={`Scroll to section: ${text}`}
                   >
-                    <span>{"#".repeat(depth)}</span> {text}
+                    <span>{" ".repeat(depth) + "-"}</span> {text}
                   </a>
                 </li>
               ))}
