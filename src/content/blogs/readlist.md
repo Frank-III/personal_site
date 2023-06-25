@@ -2,12 +2,21 @@
 title: "ReadList"
 description: Up-to-date readlist
 date: 10-05-2023
-modified: 29-05-2023
+modified: 24-06-2023
 image: "header/readlist.png"
 pined: true
 tags: ['Programming', 'Ocaml', 'Pined']
 ---
 (keep updated...)
+
+## Updated 2023/6/24
+Time really flys, another week of doing nothing. Try to write something several times, but end up fixing UI stuff. Are there better ways to write small things ? Or should I create a **pinned** threads for small thoughts. But I would update some interest articles here:
+1. [1. Ocaml in Rust way, another blog from JaneStreet Compiler Team](https://blog.janestreet.com/oxidizing-ocaml-ownership/?s=35)
+2. [2. Simple View Transition API on MPA](https://daverupert.com/2023/05/getting-started-view-transitions/)
+3. [3. Ocaml: Polymorphism and its limitations](https://v2.ocaml.org/manual/polymorphism.html)
+4. [4. Why doesn't TypeScript properly type Object.keys?](https://alexharri.com/blog/typescript-structural-typing)
+
+Enjoy your weekend!
 
 ## Updated 2023/5/29
 Spent several days on reading `Telegraml` source code(a lib that build telegram bot), frustrated by not understanding how api gets called...

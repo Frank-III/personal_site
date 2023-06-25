@@ -48,10 +48,10 @@
 				<div class="flex flex-col gap-4">
 					<div>
 						<div class="font-bold text-black">Mood: 😶‍🌫️</div>
-						<div class="font-light text-zinc-600">Reading 📚: Real Wolrd Ocaml</div>
+						<div class="font-light text-zinc-600">Reading 📚: The Rust Book</div>
 						<div class="font-light text-zinc-600">Watch 🎬: SpiderMan ⭐⭐⭐⭐⭐</div>
-						<div class="font-light text-zinc-600">Learning 👨‍💻: Ocaml, Rust, Backtracking</div>
-						<div class="font-light text-zinc-600">TODO 🪜: Add ThemeToggle, UI</div>
+						<div class="font-light text-zinc-600">Learning 👨‍💻: Ocaml, Rust, Effect</div>
+						<div class="font-light text-zinc-600">TODO 🪜: <s>Add ThemeToggle</s>, UI</div>
 					</div>
 				</div>
 				<div class="m-0 text-zinc-700">
