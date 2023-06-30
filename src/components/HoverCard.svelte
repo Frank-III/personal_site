@@ -1,18 +1,17 @@
 <script lang="ts">
 	import { HoverCard } from 'radix-svelte';
-	import type { ResolvedProps } from 'radix-svelte/internal/helpers';
   import Avatar from './Avatar.svelte';
 	let rootOpen: boolean;
 	let rootOpenDelay: number = 300;
 	let rootCloseDelay: number = 500;
 	let portalContainer: HTMLElement | string;
-	let contentSide = "right";
+	let contentSide: "right" = "right";
 	let contentSideOffset: number;
-	let contentAlign = "left";
+	let contentAlign: "start" = "start";
 	let contentAlignOffset: number;
 	let contentArrowPadding: number;
 	let contentCollisionPadding: number;
-	let contentSticky = "partial";
+	let contentSticky: "partial" = "partial";
 	let contentHideWhenDetached: boolean;
 	let contentAvoidCollisions: boolean = true;
 	let arrowWidth: number = 10;

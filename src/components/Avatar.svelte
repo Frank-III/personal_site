@@ -1,7 +1,5 @@
 <script lang="ts">
 	import { Avatar } from 'radix-svelte';
-	import type { ResolvedProps } from 'radix-svelte/internal/helpers';
-
 	let imageSrc: string = "/personal_site/images/frankwang.JPG";
 	let imageAlt: string = "Frank Wang";
 	let fallbackDelayMs: number;
