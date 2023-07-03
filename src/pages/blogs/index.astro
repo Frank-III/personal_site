@@ -9,9 +9,14 @@ const blogs = await getCollection("blogs");
 
 const sortedblogs = sort_(blogs, false);
 
+// unfinished blog could not be pinned
+const [finished, unfinished] = filterblog(sortedblogs, (blog) => {
+  return blog.isdraft === false;
+});
+
 const uniqueTags = [...new Set(blogs.map((blog) => blog.data.tags).flat())];
 
-const [pined, unpined] = filterblog(sortedblogs, (blog) => {
+const [pined, unpined] = filterblog(finished, (blog) => {
   return blog.pined;
 });
 ---
@@ -20,11 +25,18 @@ const [pined, unpined] = filterblog(sortedblogs, (blog) => {
   title="Frank"
   description="I'm Frank. I occasionally publish articles about programming and tech."
 >
-  <h1
-    class="text-xl md:text-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent"
-  >
-    My latest article
-  </h1>
+  <div class="inline flex gap-1 items-center">
+    <h1
+      class="text-xl md:text-2xl bg-gradient-to-r from-indigo-500 to-pink-500 bg-clip-text text-transparent"
+    >
+      My latest article
+    </h1>
+    <button
+      id="toggle-drafts"
+      class="gradient-hover bg-black/3 text-xs dark:bg-white/5 text-zinc-600 dark:text-neutral-400 font-bold py-0.5 px-2 rounded-xl hover:scale-105 transition-transform"
+      >draft</button
+    >
+  </div>
   <!-- Add a button for showing draft-->
   <p class="text-zinc-600 dark:text-neutral-400 text-sm mt-1 mb-1">
     I may write when I don't have a good mood<br />
@@ -46,11 +58,23 @@ const [pined, unpined] = filterblog(sortedblogs, (blog) => {
   </div>
   <div class="content-container flex flex-wrap gap-3">
     {pined.map((blog) => <ContentBlock blog={blog} ishome={false} />)}
+    {unfinished.map((blog) => <ContentBlock blog={blog} ishome={false} />)}
     {unpined.map((blog) => <ContentBlock blog={blog} ishome={false} />)}
   </div>
 </Layout>
 
-<style>
+<style is:global>
+  .draft {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: none;
+  }
+
+  .draft.show {
+    display: block;
+    opacity: 1;
+  }
+
   .tags {
     display: flex;
     flex-wrap: wrap;
@@ -76,6 +100,30 @@ const [pined, unpined] = filterblog(sortedblogs, (blog) => {
     transition: all 0.25s ease-in-out;
   }
   .dark .tag :hover {
-      background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
-    }
+    background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+  }
 </style>
+
+<script>
+  document
+    .getElementById("toggle-drafts")
+    ?.addEventListener("click", function () {
+      let draftPosts: NodeListOf<HTMLElement>= document.querySelectorAll(".draft");
+
+      for (let i = 0; i < draftPosts.length; i++) {
+        if (draftPosts[i].classList.contains("show")) {
+          draftPosts[i].classList.remove("show");
+          // Small delay to allow opacity transition before hiding the element
+          setTimeout(function () {
+            draftPosts[i].style.display = "none";
+          }, 50);
+        } else {
+          draftPosts[i].style.display = "block";
+          // Small delay to allow element to be displayed before starting opacity transition
+          setTimeout(function () {
+            draftPosts[i].classList.add("show");
+          }, 50);
+        }
+      }
+    });
+</script>

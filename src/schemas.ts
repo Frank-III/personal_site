@@ -30,4 +30,5 @@ export interface blogg {
   url: string;
   image: string;
   pined: boolean;
+  isdraft: boolean;
 };
