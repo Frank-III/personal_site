@@ -5,6 +5,7 @@ export const blogschema = z.object({
   description: z.string(),
   date: z.string(),
   modified: z.string(),
+  isdraft: z.boolean(),
   image: z.string(),
   pined: z.boolean(),
   tags: z.string().array()

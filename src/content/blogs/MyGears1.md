@@ -3,6 +3,7 @@ title: "My Gears(1)"
 description: The hardware and software I used daily
 date: 11-06-2023
 modified: 11-06-2023
+isdraft: false
 image: "header/MyGears1.png"
 pined: false
 tags: ['Programming', 'Tech', 'Linux']

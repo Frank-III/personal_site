@@ -3,6 +3,7 @@ title: "Trees in Ocaml"
 description: Tress in Ocaml
 date: 17-05-2023
 modified: 18-05-2023
+isdraft: false
 image: "header/tree_ocaml.png"
 pined: false 
 tags: ['Tree', 'Ocaml', 'Algorithm']

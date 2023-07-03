@@ -3,6 +3,7 @@ title: "ReadList"
 description: Up-to-date readlist
 date: 10-05-2023
 modified: 24-06-2023
+isdraft: false
 image: "header/readlist.png"
 pined: true
 tags: ['Programming', 'Ocaml', 'Pined']

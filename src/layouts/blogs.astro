@@ -1,5 +1,4 @@
 ---
-import { string } from "astro/zod";
 import Layout from "../layouts/Global.astro";
 
 // const {title, image, date, modified, description} = Astro.props;
@@ -182,9 +181,22 @@ const { headings } = await content.render();
       padding-inline: 1rem;
     }
 
+    blockquote{
+        border-left: 3px solid #E67E22; /* This will create a thick line on the left */
+        background-color: #F1F1EF; /* This is the background color */
+        border-radius: 5px; /* Rounded corners */
+        padding: 10px; /* Space around the content */
+        display: flex; /* To lay out icon and text horizontally */
+        align-items: start; /* Align icon and text at the top */
+        gap: 10px; /* Space between icon and text */
+        margin: 10px 0; /* Space above and below the callout */
+    }
 
+    .dark blockquote{
+        background-color: #252525; /* This is the background color */
+    }
     code {
-      color: #6799D0;
+      color: #9C5AEF;
       padding: 2px 4px;
       border-radius: 3px;
     }
@@ -234,12 +246,10 @@ const { headings } = await content.render();
   <script>
     import { annotate } from "rough-notation";
     document.querySelectorAll("strong").forEach((el) => {
-      console.log(el);
-
       const annotation = annotate(el, {
         type: "underline",
         iterations: 1,
-        padding: 2,
+        padding: 0,
         // Yellow for dark mode
         color: "#ff7308",
       });

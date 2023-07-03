@@ -26,7 +26,7 @@ const sortedblogs = blogs
   .sort((a, b) => {
     return dayjs(b.date).diff(dayjs(a.date));
   })
-  .splice(0, 5);
+  .splice(0, 4);
 
 const [pined, unpined] = filterblog(sortedblogs, (blog) => {
   return blog.pined;

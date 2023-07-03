@@ -1,0 +1,70 @@
+<body id="body" class="light-mode">
+  
+  <button type="button" class="btn btn-sm float-start" name="dark_light" onclick="toggleDarkLight();" title="Toggle dark/light mode" ><span class="symbol"></span></button>
+  
+<body>
+
+
+
+<style>
+body.dark-mode {
+  background-color: #111;
+  color: #eee;
+}
+body.dark-mode a {
+  color: #111;
+}
+body.dark-mode button {
+  background-color: #eee;
+  color: #111;
+  position: fixed;
+  /* or absolute */
+  top: 50%;
+  left: 50%;
+}
+body.dark-mode .symbol:before {
+  text-decoration: none;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "";
+}
+body.dark-mode .symbol:after {
+  content: " Dark Mode";
+}
+body.dark-mode .form-check-label:before {
+  content: " Dark";
+}
+
+body.light-mode {
+  background-color: #eee;
+  color: #111;
+}
+body.light-mode a {
+  color: #111;
+}
+body.light-mode button {
+  background-color: #111;
+  color: #eee;
+  position: fixed;
+  /* or absolute */
+  top: 50%;
+  left: 50%;
+}
+body.light-mode .symbol:before {
+  text-decoration: none;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "";
+}
+body.light-mode .symbol:after {
+  content: " Light Mode";
+}
+body.light-mode .form-check-label:before {
+  content: " Light";
+}
+
+.btn-warning,
+.btn-sm,
+.btn-disabled {
+  border-radius: 23px;
+}
