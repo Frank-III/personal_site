@@ -3,7 +3,7 @@ title: "Reflection on Rusty-Ocaml"
 description: Read Some Flambda Compiler
 date: 02-07-2023
 modified: 02-07-2023
-isdraft: true 
+isdraft: false
 image: "header/ReflectionOcaml.png"
 pined: false
 tags: ['Programming', 'Ocaml', 'Rust']
