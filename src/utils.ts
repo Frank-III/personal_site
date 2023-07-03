@@ -8,7 +8,7 @@ export function filterblog(blogs: blogg[], cond: (obj: blogg) => boolean) {
   const satisfied = Array<blogg>();
   const unsatisfied = Array<blogg>();
   blogs.forEach((blog) => {
-    if (blog.pined) {
+    if (cond(blog)) {
       satisfied.push(blog);
     } else {
       unsatisfied.push(blog);
@@ -19,14 +19,15 @@ export function filterblog(blogs: blogg[], cond: (obj: blogg) => boolean) {
 
 export function sort_(inputs: CollectionEntry<"blogs">[], redirect: Boolean = false): blogg[] {
   return inputs.map((input) => {
-    const { title, date, description, image, pined } = input.data;
+    const { title, date, description, image, pined, isdraft} = input.data;
     return {
       title,
       date: dayjs(date, "DD-MM-YYYY").format("YYYY-MM-DD"),
       description,
       url: redirect ? '/personal_site/blogs/' + input.slug : input.slug,
       image: image,
-      pined: pined
+      pined: pined,
+      isdraft: isdraft
     } as blogg;
   })
     .sort((a, b) => {

@@ -6,29 +6,17 @@ import customParseFormat from "dayjs/plugin/customParseFormat";
 dayjs.extend(customParseFormat);
 import { getCollection, CollectionEntry } from "astro:content";
 import type { blogg } from "../schemas";
-import { filterblog } from "../utils";
+import { filterblog, sort_ } from "../utils";
 import ContentBlock from "../components/ContentBlock.astro";
 // Return the list of articles in the "articles" directory
 const blogs = await getCollection("blogs");
 
 // Parse the date of each article, sort by date descending and return an array of the 4 last articles
-const sortedblogs = blogs
-  .map((blog) => {
-    const { title, modified, description, image } = blog.data;
-    return {
-      title,
-      date: dayjs(modified, "DD-MM-YYYY").format("YYYY-MM-DD"),
-      description,
-      url: blog.slug,
-      image: image,
-    } as blogg;
-  })
-  .sort((a, b) => {
-    return dayjs(b.date).diff(dayjs(a.date));
-  })
-  .splice(0, 4);
-
-const [pined, unpined] = filterblog(sortedblogs, (blog) => {
+const sortedblogs = sort_(blogs, false);
+const [finished, _] = filterblog(sortedblogs, (blog) => {
+  return (blog.isdraft) === false;
+});
+const [pined, unpined] = filterblog(finished.slice(0,4), (blog) => {
   return blog.pined;
 });
 ---
