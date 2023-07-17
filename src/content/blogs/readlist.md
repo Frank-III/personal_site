@@ -9,6 +9,23 @@ pined: true
 tags: ['Programming', 'Ocaml', 'Pined']
 ---
 (keep updated...)
+## Updated 2023/7/16
+Haven't update my "readlist" for several weeks, after two weeks of unconciciousness and experience a spicial weekend(my very first birthday with my loved girlfriend🤟), my first time enjoy a concert: Ed sheeran and special guset Eminem, have a taste of the original mon's spaghetti🤩. 
+
+Back to our main topic: MY READLIST, read a lot of articles mostly some examples of Rust best pratcice and some practical categorical theory:
+
+| title | Franks's Note|
+| ----- | ------- | 
+| [Intro To Effect, Part 1: What Is Effect?](https://ybogomolov.me/01-effect-intro) | Effect-ts seems to be a hyper in Typescript communities, try to grasp the idea behind Effect |
+| [Intro to fp-ts, part 1: Higher-Kinded Types](https://ybogomolov.me/01-higher-kinded-types) | Understand the basic of FP-TS: the fundation behind Effect-ts | 
+| [Deref Confusion--Unusually high astonishment by Rust standards](https://www.fuzzypixelz.com/blog/deref-confusion/) | Not fully understanded, would take a look twice |
+| [dust: Design and Deploy Large Language Model Apps with Rust](https://github.com/dust-tt/dust?s=35) | As the LangChain Lib being criticize for bloated abstraction, new tools are discovered | 
+| [Cats: TypeLevel Scala](https://typelevel.org/cats/typeclasses/functor.html) | `fp-ts` lib is not well-documented, so I resorted to Scala for better documentation of Functional type implementation |
+
+I read a lot of articles during last week, and I don't use any readlater tools for now, I simple create two telegram group and share the articles in the group, if you would like to read some articles I read, please **DM** me, I could add you in my group, let me know if you want to discuss!
+
+PS: I also add a functionality in my blog page: `draft` button, if you have suggestions on my draft blogs, please discuss with me
+
 
 ## Updated 2023/6/24
 Time really flys, another week of doing nothing. Try to write something several times, but end up fixing UI stuff. Are there better ways to write small things ? Or should I create a **pinned** threads for small thoughts. But I would update some interest articles here:
