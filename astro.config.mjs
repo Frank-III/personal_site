@@ -18,7 +18,7 @@ export default defineConfig({
   markdown: {
     shikiConfig: {
       theme: "dark-plus",
-      langs: ["julia", "python", "bash", "ocaml"],
+      langs: ["julia", "python", "bash", "ocaml", "scala"],
       wrap: true,
     },
   },
