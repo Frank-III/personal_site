@@ -2,13 +2,26 @@
 title: "ReadList"
 description: Up-to-date readlist
 date: 10-05-2023
-modified: 24-06-2023
+modified: 24-07-2023
 isdraft: false
 image: "header/readlist.png"
 pined: true
 tags: ['Programming', 'Ocaml', 'Pined']
 ---
 (keep updated...)
+
+## Updated 2023/7/16
+Another week passed, I've been learning and preparing a new long series blog about Typeclass in functional programmings, and learning networks at the same time, a lot of readings this week, time to share some grea materials with you, also plz wait for my new blogs!
+
+| title | Franks's Note|
+| ----- | ------- | 
+| [Scala with Cats](https://www.scalawithcats.com/) | When started learning Ocaml, Typeclass always seems mysterious to me, time to have soem concrete examples |
+| [A Chat-App built with Rust and React](https://github.com/tinrab/rusty-chat) | Try to learn some Network staff seriously, I create a fork and switch to `Axum` Framework, check it out: [Axum-Chat](https://github.com/Frank-III/rusty-chat) | 
+| [High Performance Browser Networking](https://hpbn.co/) | I discovered this book from HN, a really good one to learn some Network Knowledge not so theoratical |
+| [LLAMA 2: an incredible open-source LLM](https://www.interconnects.ai/p/llama-2-from-meta?s=35) | Llama2 is really a good progress on Open AGI! |  
+
+A lot of reading this week, but mostly from books, still got so many things to learn and code, hope you enjoy the good articles. If you want to take a look of my new drafted blog, hit the `draft` button on blogs page, also considering refactor my blog page to better deliver contents, see you next week!
+
 ## Updated 2023/7/16
 Haven't update my "readlist" for several weeks, after two weeks of unconciciousness and experience a spicial weekend(my very first birthday with my loved girlfriend🤟), my first time enjoy a concert: Ed sheeran and special guset Eminem, have a taste of the original mon's spaghetti🤩. 
 
