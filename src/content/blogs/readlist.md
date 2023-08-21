@@ -10,6 +10,11 @@ tags: ['Programming', 'Ocaml', 'Pined']
 ---
 (keep updated...)
 
+## Updated 2023/8/20
+
+Long time no see! Tomorrow the 23 fall semster would begin which is my last semester at UIUC, desperated at building nothing during the summer 🥲! I am actively looking for a job at United States now, and so the last few weeks I've been busy learnign algorithms and mostly data structures, prepare for interviews for both financial analyst job and SDE(very little prob to get tho), many times I open my blog and want to share some great articles, there would be another voice keep pushing me to may be do another leetcode or learn to build something that would shred some light on my resume, kinda burn out these days, life would be better after tommorrow!
+
+
 ## Updated 2023/7/16
 Another week passed, I've been learning and preparing a new long series blog about Typeclass in functional programmings, and learning networks at the same time, a lot of readings this week, time to share some grea materials with you, also plz wait for my new blogs!
 
