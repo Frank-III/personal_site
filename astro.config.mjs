@@ -1,7 +1,6 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import UnoCSS from "unocss/astro";
-import svelte from "@astrojs/svelte";
 
 import db from "@astrojs/db";
 
