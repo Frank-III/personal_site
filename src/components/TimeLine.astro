@@ -63,9 +63,9 @@ const awards: Array<Award> = [
               />
             )}
             {award.externalLink && (
-              <button
-                type="button"
-                class="group flex items-center justify-center p-0.5 text-center font-medium relative focus:z-10 focus:outline-none transition-[color,background-color,border-color,text-decoration-color,fill,stroke,box-shadow] text-gray-900 bg-white border border-gray-200 enabled:hover:bg-gray-100 enabled:hover:text-cyan-700 :ring-cyan-700 focus:text-cyan-700 dark:bg-transparent dark:text-gray-400 dark:border-gray-600 dark:enabled:hover:text-white dark:enabled:hover:bg-gray-700 focus:ring-4 rounded-lg mt-3"
+              <a
+                href={award.externalLink}
+                class="group flex items-center w-40 justify-center p-0.5 text-center font-medium relative transition-[color,background-color,border-color,text-decoration-color,fill,stroke,box-shadow] text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-cyan-700 :ring-cyan-700 dark:bg-transparent dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 rounded-lg mt-3"
               >
                 <span class="flex items-center transition-all duration-200 rounded-md text-sm px-4 py-2">
                   Learn More
@@ -87,7 +87,7 @@ const awards: Array<Award> = [
                     />
                   </svg>
                 </span>
-              </button>
+              </a>
             )}
           </div>
         </div>
