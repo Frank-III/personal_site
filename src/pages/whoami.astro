@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Global.astro";
 import Header from "../components/header.tsx";
-import HoverCard from "../components/HoverCard.svelte";
+import PersonalHoverCard from "../components/HoverCard.tsx";
 ---
 
 <Layout
@@ -9,7 +9,7 @@ import HoverCard from "../components/HoverCard.svelte";
   description="Discover who I am and what I like doing in my spare time"
 >
   <div class="flex flex-col transition-all h-[73vh] justify-center">
-    <HoverCard client:load />
+    <PersonalHoverCard client:load />
     <h1
       class="text-3xl transition-all mb-1 font-semibold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent"
     >
