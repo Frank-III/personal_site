@@ -1,0 +1,113 @@
+---
+interface Award {
+  date: Date;
+  title: string;
+  description: string;
+  image?: string;
+  externalLink?: string;
+}
+
+const awards: Array<Award> = [
+  {
+    date: new Date(2023, 2, 1),
+    title: "Dr. Z. Ju Scholarship",
+    description:
+      "Preference to students who understand business culture in Asia, speak and Asian language and/or intend to apply their degree in Asia after graduation.",
+    externalLink:
+      "https://msfe.illinois.edu/current-students/scholarship-winners",
+  },
+  {
+    date: new Date(2023, 2, 28),
+    title: "1st Place of HackIllinois",
+    description:
+      "PixeLana is a multiplayer web app game where Stable Diffusion meets the Solana Blockchain. Players will take turns entering a prompt for the rest of the party to utilize the power of Stable Diffusion and generate images based on the prompt. The author of each prompt will then judge and select which art piece is the funniest, prettiest, or best image in the context of the prompt.",
+    image: "https://avatars.githubusercontent.com/u/161095078?s=200&v=4",
+    externalLink: "https://github.com/PixeLana",
+  },
+  {
+    date: new Date(2023, 3, 9),
+    title: "1st Place of Hack for Good at Google",
+    description:
+      "A 1-day event where Chicago technologists come together to work on software and/or hardware concepts that make a difference for communities.",
+    externalLink: "https://www.codeyourdreams.org/code-for-good",
+  },
+].sort((a, b) => b.date.getTime() - a.date.getTime());
+---
+
+<div
+  class="scroll-timeline overflow-auto overflow-y-visible h-[540px] relative pl-2 flex flex-col items-center"
+>
+  <div class="blur-bg top-0 mb-2 h-10px text-transparent">sdad</div>
+  <div class="timeline border-l relative border-gray-200 dark:border-gray-700">
+    {
+      awards.map((award, index) => (
+        <div class="timeline-item mb-10 ml-6">
+          <div data-testid="timeline-point" class="">
+            <div class="absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full border border-white bg-gray-200 dark:border-gray-900 dark:bg-gray-700" />
+          </div>
+          <div data-testid="timeline-content" class="">
+            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+              {award.date.toLocaleDateString()}
+            </time>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+              {award.title}
+            </h3>
+            <div class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
+              {award.description}
+            </div>
+            {award.image && (
+              <img
+                src={award.image}
+                alt={award.title}
+                class="w-48 h-48 rounded-lg object-contain"
+              />
+            )}
+            {award.externalLink && (
+              <button
+                type="button"
+                class="group flex items-center justify-center p-0.5 text-center font-medium relative focus:z-10 focus:outline-none transition-[color,background-color,border-color,text-decoration-color,fill,stroke,box-shadow] text-gray-900 bg-white border border-gray-200 enabled:hover:bg-gray-100 enabled:hover:text-cyan-700 :ring-cyan-700 focus:text-cyan-700 dark:bg-transparent dark:text-gray-400 dark:border-gray-600 dark:enabled:hover:text-white dark:enabled:hover:bg-gray-700 focus:ring-4 rounded-lg mt-3"
+              >
+                <span class="flex items-center transition-all duration-200 rounded-md text-sm px-4 py-2">
+                  Learn More
+                  <svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                    class="ml-2 h-3 w-3"
+                    height="1em"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+              </button>
+            )}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+  <span
+    class="justify-center text-center text-zinc-600 dark:text-neutral-400 text-sm font-italic"
+    >More to Come...</span
+  >
+</div>
+
+<style>
+  .scroll-timeline {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  .blur-bg {
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    backdrop-filter: blur(10px);
+  }
+</style>

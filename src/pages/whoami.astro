@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Global.astro";
 import Header from "../components/header.tsx";
+import TimeLine from "../components/TimeLine.astro";
 import PersonalHoverCard from "../components/HoverCard.tsx";
 ---
 
@@ -8,7 +9,7 @@ import PersonalHoverCard from "../components/HoverCard.tsx";
   title="Who am I ? - Frank W"
   description="Discover who I am and what I like doing in my spare time"
 >
-  <div class="flex flex-col transition-all h-[73vh] justify-center">
+  <div class="h-74vh flex flex-col transition-all justify-center">
     <PersonalHoverCard client:load />
     <h1
       class="text-3xl transition-all mb-1 font-semibold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent"
@@ -28,6 +29,12 @@ import PersonalHoverCard from "../components/HoverCard.tsx";
         frankwaang@outlook.com
       </a>
     </p>
+    <div class="py-4">
+      <div class="gradient-text font-bold text-[25px] font-italic pb-2">
+        Something About Me
+      </div>
+      <TimeLine />
+    </div>
   </div>
 </Layout>
 
@@ -41,5 +48,19 @@ import PersonalHoverCard from "../components/HoverCard.tsx";
     text-fill-color: transparent;
     text-decoration: none;
     transition: all 0.25s ease-in-out;
+  }
+  .gradient-text {
+    background-color: red;
+
+    /* Create the gradient. */
+    background-image: linear-gradient(45deg, #f3ec78, #af4261);
+
+    /* Set the background size and repeat properties. */
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
   }
 </style>
