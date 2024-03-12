@@ -9,7 +9,7 @@ interface Award {
 
 const awards: Array<Award> = [
   {
-    date: new Date(2023, 2, 1),
+    date: new Date(2024, 1, 1),
     title: "Dr. Z. Ju Scholarship",
     description:
       "Preference to students who understand business culture in Asia, speak and Asian language and/or intend to apply their degree in Asia after graduation.",
@@ -17,15 +17,15 @@ const awards: Array<Award> = [
       "https://msfe.illinois.edu/current-students/scholarship-winners",
   },
   {
-    date: new Date(2023, 2, 28),
-    title: "1st Place of HackIllinois",
+    date: new Date(2024, 1, 28),
+    title: "1st Place of HackIllinois 2024",
     description:
       "PixeLana is a multiplayer web app game where Stable Diffusion meets the Solana Blockchain. Players will take turns entering a prompt for the rest of the party to utilize the power of Stable Diffusion and generate images based on the prompt. The author of each prompt will then judge and select which art piece is the funniest, prettiest, or best image in the context of the prompt.",
     image: "https://avatars.githubusercontent.com/u/161095078?s=200&v=4",
     externalLink: "https://github.com/PixeLana",
   },
   {
-    date: new Date(2023, 3, 9),
+    date: new Date(2024, 2, 9),
     title: "1st Place of Hack for Good at Google",
     description:
       "A 1-day event where Chicago technologists come together to work on software and/or hardware concepts that make a difference for communities.",
@@ -37,15 +37,15 @@ const awards: Array<Award> = [
 <div
   class="scroll-timeline overflow-auto overflow-y-visible h-[540px] relative pl-2 flex flex-col items-center"
 >
-  <div class="blur-bg top-0 mb-2 h-10px text-transparent">sdad</div>
+  <div class="blur-bg top-0 mb-2 h-10px text-transparent"></div>
   <div class="timeline border-l relative border-gray-200 dark:border-gray-700">
     {
       awards.map((award, index) => (
-        <div class="timeline-item mb-10 ml-6">
-          <div data-testid="timeline-point" class="">
-            <div class="absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full border border-white bg-gray-200 dark:border-gray-900 dark:bg-gray-700" />
+        <div class="timeline-item mb-10 ml-6 group ">
+          <div data-testid="timeline-point" class="group">
+            <div class="group absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full border border-white bg-gray-200 dark:border-gray-900 dark:bg-gray-700" />
           </div>
-          <div data-testid="timeline-content" class="">
+          <div data-testid="timeline-content" class="group">
             <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
               {award.date.toLocaleDateString()}
             </time>
