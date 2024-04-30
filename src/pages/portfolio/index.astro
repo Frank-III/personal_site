@@ -4,7 +4,7 @@ import Layout from "../../layouts/Global.astro";
 // Used to parse date
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
-import { getCollection, CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
 dayjs.extend(customParseFormat);
 import { Icon } from "astro-icon";
 
@@ -43,9 +43,7 @@ projects.sort((a, b) => {
     <p class="p-y[0.5rem] text-zinc-600 dark:text-neutral-200">Languages:</p>
     {
       unique_lang.map((lang) => (
-        <p class="tag text-zinc-600 dark:text-neutral-200 underline">
-          {lang}
-        </p>
+        <p class="tag text-zinc-600 dark:text-neutral-200 underline">{lang}</p>
       ))
     }
   </div>

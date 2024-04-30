@@ -4,7 +4,7 @@ import Layout from "../layouts/Global.astro";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 dayjs.extend(customParseFormat);
-import { getCollection, CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import type { blogg } from "../schemas";
 import { filterblog, sort_ } from "../utils";
 import ContentBlock from "../components/ContentBlock.astro";
@@ -14,9 +14,9 @@ const blogs = await getCollection("blogs");
 // Parse the date of each article, sort by date descending and return an array of the 4 last articles
 const sortedblogs = sort_(blogs, false);
 const [finished, _] = filterblog(sortedblogs, (blog) => {
-  return (blog.isdraft) === false;
+  return blog.isdraft === false;
 });
-const [pined, unpined] = filterblog(finished.slice(0,4), (blog) => {
+const [pined, unpined] = filterblog(finished.slice(0, 4), (blog) => {
   return blog.pined;
 });
 ---
@@ -47,8 +47,11 @@ const [pined, unpined] = filterblog(finished.slice(0,4), (blog) => {
     {unpined.map((blog) => <ContentBlock blog={blog} ishome={true} />)}
   </div>
   <div class="flex justify-center py-5">
-    <a href="/personal_site/blogs" class="gradient-hover text-neutral-600 dark:text-zinc-300 text-center font-semibold w-[60%] sm:w-[24%] bg-black/3 dark:bg-white/5 px-2 py-1 rounded-lg hover:scale-105 transition-transform duration-150 ease-in-out">
-      View more 
+    <a
+      href="/personal_site/blogs"
+      class="gradient-hover text-neutral-600 dark:text-zinc-300 text-center font-semibold w-[60%] sm:w-[24%] bg-black/3 dark:bg-white/5 px-2 py-1 rounded-lg hover:scale-105 transition-transform duration-150 ease-in-out"
+    >
+      View more
     </a>
   </div>
 </Layout>

@@ -10,7 +10,6 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/db": "^0.8.1",
     "@astrojs/rss": "4.0.0",
     "@astrojs/svelte": "5.0.0",
     "@radix-ui/react-avatar": "^1.0.4",

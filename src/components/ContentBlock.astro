@@ -15,7 +15,7 @@ const commonClasses =
   href={ishome ? "blogs/" + blog.url : blog.url}
   class={ishome
     ? `${commonClasses} inline-block rounded-lg`
-    : `${blog.isdraft ? 'draft': ''} ${commonClasses} relative rounded-xl`}
+    : `${blog.isdraft ? "draft" : ""} ${commonClasses} relative rounded-xl`}
 >
   {
     blog.pined && (
