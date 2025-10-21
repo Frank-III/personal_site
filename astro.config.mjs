@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import UnoCSS from "unocss/astro";
+import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
@@ -8,7 +9,7 @@ export default defineConfig({
   base: "/personal_site",
   integrations: [react(), UnoCSS({
     injectReset: true
-  })],
+  }), icon()],
   markdown: {
     shikiConfig: {
       theme: "dark-plus",
