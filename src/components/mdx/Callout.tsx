@@ -1,35 +1,27 @@
 import React from 'react';
 
 interface CalloutProps {
-  type?: 'info' | 'warning' | 'success' | 'error';
+  type?: 'note' | 'tip' | 'important' | 'warning';
   title?: string;
   children: React.ReactNode;
 }
 
-export function Callout({ type = 'info', title, children }: CalloutProps) {
+export function Callout({ type = 'note', title, children }: CalloutProps) {
   const styles = {
-    info: 'bg-blue-50 dark:bg-blue-900/20 border-blue-500 text-blue-900 dark:text-blue-100',
-    warning: 'bg-yellow-50 dark:bg-yellow-900/20 border-yellow-500 text-yellow-900 dark:text-yellow-100',
-    success: 'bg-green-50 dark:bg-green-900/20 border-green-500 text-green-900 dark:text-green-100',
-    error: 'bg-red-50 dark:bg-red-900/20 border-red-500 text-red-900 dark:text-red-100',
-  };
-
-  const icons = {
-    info: 'ℹ️',
-    warning: '⚠️',
-    success: '✅',
-    error: '❌',
+    note: 'bg-black/3 dark:bg-white/5 border-zinc-300 dark:border-zinc-700',
+    tip: 'bg-black/3 dark:bg-white/5 border-zinc-400 dark:border-zinc-600',
+    important: 'bg-black/3 dark:bg-white/5 border-zinc-500 dark:border-zinc-500',
+    warning: 'bg-black/3 dark:bg-white/5 border-zinc-600 dark:border-zinc-400',
   };
 
   return (
-    <div className={`my-4 p-4 border-l-4 rounded-r ${styles[type]}`}>
+    <div className={`my-4 p-4 border-l-2 rounded ${styles[type]}`}>
       {title && (
-        <div className="font-semibold mb-2 flex items-center gap-2">
-          <span>{icons[type]}</span>
+        <div className="font-semibold mb-2 text-zinc-800 dark:text-zinc-200">
           {title}
         </div>
       )}
-      <div className="text-sm">{children}</div>
+      <div className="text-sm text-zinc-600 dark:text-zinc-400">{children}</div>
     </div>
   );
 }

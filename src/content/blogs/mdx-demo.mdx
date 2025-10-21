@@ -1,163 +1,58 @@
 ---
-title: "Writing with MDX - Interactive Blog Posts"
-description: "Exploring MDX capabilities with interactive components in Astro"
+title: "MDX Support Enabled"
+description: "Now supporting MDX with interactive components for better technical writing"
 date: "21-10-2025"
 modified: "21-10-2025"
-isdraft: false
+isdraft: true
 image: "header/Introduction.png"
-pined: true
-tags: ['Programming', 'Tech', 'Intro']
+pined: false
+tags: ['Programming', 'Tech']
 ---
 
 import { Callout } from '../../components/mdx/Callout';
 import { CollapsibleSection } from '../../components/mdx/CollapsibleSection';
 import { CodePlayground } from '../../components/mdx/CodePlayground';
 
-## What is MDX?
+## MDX Component Examples
 
-**MDX** combines the simplicity of Markdown with the power of JSX components. This means you can write regular markdown **and** embed interactive React components directly in your blog posts!
+This site now supports MDX - Markdown with embedded React components. Here are the available components:
 
-<Callout type="info" title="Fun Fact">
-This entire blog post is written in MDX! All the interactive elements you see are React components embedded in markdown.
+### Callout Blocks
+
+<Callout type="note" title="Note">
+Use callouts to highlight important information in your posts.
 </Callout>
 
-## Why Use MDX for Technical Blogging?
+### Collapsible Sections
 
-Here are some compelling reasons:
+<CollapsibleSection title="Example: Algorithm complexity analysis">
 
-1. **Interactive Code Examples** - Let readers experiment with code
-2. **Custom Callouts** - Highlight important information
-3. **Collapsible Sections** - Keep long content organized
-4. **Reusable Components** - Build once, use everywhere
+Time complexity analysis of the factorial function:
 
-<Callout type="success" title="Pro Tip">
-MDX is perfect for technical blogs because you can create custom components for diagrams, code playgrounds, and interactive visualizations!
-</Callout>
-
-## Interactive Code Playground
-
-Here's an example of a code playground with syntax highlighting and copy functionality:
-
-<CodePlayground
-  language="ocaml"
-  code={`(* Factorial function in OCaml *)
-let rec factorial n =
-  if n = 0 then 1
-  else n * factorial (n - 1)
-
-(* Try it *)
-let result = factorial 5  (* 120 *)`}
-/>
-
-You can make it editable too:
-
-<CodePlayground
-  language="javascript"
-  editable={true}
-  code={`// Edit this code!
-function fibonacci(n) {
-  if (n <= 1) return n;
-  return fibonacci(n - 1) + fibonacci(n - 2);
-}
-
-console.log(fibonacci(7)); // Try changing the number!`}
-/>
-
-## Collapsible Deep Dives
-
-Sometimes you want to provide extra detail without cluttering the main article:
-
-<CollapsibleSection title="Click to see implementation details">
-
-### Under the Hood
-
-The `CodePlayground` component uses React hooks:
-- `useState` to manage the code content
-- `navigator.clipboard` API for copy functionality
-- Tailwind/UnoCSS classes for styling
-
-Here's a simplified version:
-
-```typescript
-function CodePlayground({ code: initialCode }) {
-  const [code, setCode] = useState(initialCode);
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(code);
-  };
-
-  return (
-    <div>
-      <button onClick={handleCopy}>Copy</button>
-      <textarea value={code} onChange={(e) => setCode(e.target.value)} />
-    </div>
-  );
-}
-```
+- **Best case**: O(n)
+- **Average case**: O(n)
+- **Worst case**: O(n)
+- **Space complexity**: O(n) due to call stack
 
 </CollapsibleSection>
 
-## Different Callout Types
+### Interactive Code Blocks
 
-You can use different callout types for various purposes:
+<CodePlayground
+  language="ocaml"
+  editable={false}
+  code={`(* Pattern matching in OCaml *)
+let rec length = function
+  | [] -> 0
+  | _ :: t -> 1 + length t`}
+/>
 
-<Callout type="warning" title="Important Warning">
-Make sure to always validate user input before processing it!
-</Callout>
+## Usage
 
-<Callout type="error" title="Common Mistake">
-Don't forget to handle edge cases in recursive functions. Stack overflow is real!
-</Callout>
+To use these components in your MDX posts, import them at the top:
 
-<Callout type="success">
-MDX makes it easy to create engaging, interactive content without sacrificing the simplicity of Markdown.
-</Callout>
-
-## Regular Markdown Still Works!
-
-You can still use all your favorite markdown features:
-
-- **Bold** and *italic* text
-- `inline code`
-- [Links](https://astro.build)
-- Images
-- Tables
-- And more!
-
-### Code Blocks
-
-Regular code blocks with syntax highlighting still work:
-
-```julia
-# Computing π using Monte Carlo
-function estimate_pi(n::Int)
-    inside = 0
-    for _ in 1:n
-        x, y = rand(), rand()
-        if x^2 + y^2 <= 1
-            inside += 1
-        end
-    end
-    return 4 * inside / n
-end
-
-println(estimate_pi(1_000_000))
+```mdx
+import { Callout } from '../../components/mdx/Callout';
 ```
 
-## Conclusion
-
-MDX brings the best of both worlds:
-- The simplicity and readability of Markdown
-- The power and interactivity of React components
-
-Perfect for technical blogging where you want to engage readers with interactive examples!
-
-<Callout type="info" title="Next Steps">
-Try creating your own MDX components! Some ideas:
-- Interactive algorithm visualizations
-- LaTeX math rendering
-- Embedded playgrounds for different languages
-- Custom diagrams and flowcharts
-</Callout>
-
-Happy writing! 🚀
+Then use them anywhere in your markdown.
