@@ -7,7 +7,7 @@ import MarkdownIt from 'markdown-it';
 const parser = new MarkdownIt();
 dayjs.extend(customParseFormat);
 
-export async function get(context) {
+export async function GET(context) {
   const blogs = await getCollection('blogs');
   return rss({
     title: 'Franks’s Blog',
