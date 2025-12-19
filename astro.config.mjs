@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
-import react from "@astrojs/react";
+import svelte from "@astrojs/svelte";
 import UnoCSS from "unocss/astro";
 import icon from "astro-icon";
 import mdx from "@astrojs/mdx";
@@ -9,7 +9,7 @@ export default defineConfig({
   site: "https://Frank-III.github.io",
   base: "/personal_site",
   integrations: [
-    react(),
+    svelte(),
     UnoCSS({
       injectReset: true
     }),
